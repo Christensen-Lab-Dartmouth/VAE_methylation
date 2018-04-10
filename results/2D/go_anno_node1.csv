@@ -1,0 +1,51 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0005654","nucleoplasm","CC",1856,21,7.10215526784364e-05,0.902580257764603
+"GO:0031981","nuclear lumen","CC",2200,23,9.15163759457139e-05,0.902580257764603
+"GO:0044428","nuclear part","CC",2441,24,0.000172855398903093,1
+"GO:0044451","nucleoplasm part","CC",419,8,0.000510540341629546,1
+"GO:0045687","positive regulation of glial cell differentiation","BP",26,3,0.000715335870073842,1
+"GO:0060999","positive regulation of dendritic spine development","BP",24,3,0.000739442645247379,1
+"GO:0048711","positive regulation of astrocyte differentiation","BP",8,2,0.00100776970091554,1
+"GO:0014015","positive regulation of gliogenesis","BP",37,3,0.00194254568282067,1
+"GO:0038154","interleukin-11-mediated signaling pathway","BP",1,1,0.00232960646455428,1
+"GO:0019970","interleukin-11 binding","MF",1,1,0.00232960646455428,1
+"GO:0004921","interleukin-11 receptor activity","MF",1,1,0.00232960646455428,1
+"GO:0000839","Hrd1p ubiquitin ligase ERAD-L complex","CC",1,1,0.00257616304362539,1
+"GO:0010661","positive regulation of muscle cell apoptotic process","BP",13,2,0.00262451011326994,1
+"GO:0061003","positive regulation of dendritic spine morphogenesis","BP",10,2,0.00274041918730066,1
+"GO:0019900","kinase binding","MF",443,8,0.00276318929567852,1
+"GO:0060998","regulation of dendritic spine development","BP",40,3,0.00294870446423286,1
+"GO:0050773","regulation of dendrite development","BP",87,4,0.00297445791381121,1
+"GO:0070013","intracellular organelle lumen","CC",2770,23,0.00312267383665742,1
+"GO:0031974","membrane-enclosed lumen","CC",2770,23,0.00312267383665742,1
+"GO:0043233","organelle lumen","CC",2770,23,0.00312267383665742,1
+"GO:0047464","heparosan-N-sulfate-glucuronate 5-epimerase activity","MF",1,1,0.00315879471930579,1
+"GO:0050379","UDP-glucuronate 5'-epimerase activity","MF",1,1,0.00315879471930579,1
+"GO:0016604","nuclear body","CC",213,5,0.0033810633735981,1
+"GO:0044446","intracellular organelle part","CC",5332,37,0.00355633581649283,1
+"GO:0048874","homeostasis of number of cells in a free-living population","BP",1,1,0.00356283332784805,1
+"GO:0052097","interspecies quorum sensing","BP",1,1,0.00356283332784805,1
+"GO:0060731","positive regulation of intestinal epithelial structure maintenance","BP",1,1,0.00356283332784805,1
+"GO:0009372","quorum sensing","BP",1,1,0.00356283332784805,1
+"GO:0052106","quorum sensing involved in interaction with host","BP",1,1,0.00356283332784805,1
+"GO:0070715","sodium-dependent organic cation transport","BP",1,1,0.00356283332784805,1
+"GO:1900006","positive regulation of dendrite development","BP",45,3,0.0036109826340947,1
+"GO:0009758","carbohydrate utilization","BP",1,1,0.00366802111970918,1
+"GO:1902488","cholangiocyte apoptotic process","BP",1,1,0.00366802111970918,1
+"GO:1990705","cholangiocyte proliferation","BP",1,1,0.00366802111970918,1
+"GO:1990739","granulosa cell proliferation","BP",1,1,0.00366802111970918,1
+"GO:1904200","iodide transmembrane transport","BP",1,1,0.00366802111970918,1
+"GO:1904193","negative regulation of cholangiocyte apoptotic process","BP",1,1,0.00366802111970918,1
+"GO:1904213","negative regulation of iodide transmembrane transport","BP",1,1,0.00366802111970918,1
+"GO:1904202","negative regulation of iodide transport","BP",1,1,0.00366802111970918,1
+"GO:1904056","positive regulation of cholangiocyte proliferation","BP",1,1,0.00366802111970918,1
+"GO:1904000","positive regulation of eating behavior","BP",1,1,0.00366802111970918,1
+"GO:1904197","positive regulation of granulosa cell proliferation","BP",1,1,0.00366802111970918,1
+"GO:1904206","positive regulation of skeletal muscle hypertrophy","BP",1,1,0.00366802111970918,1
+"GO:0043610","regulation of carbohydrate utilization","BP",1,1,0.00366802111970918,1
+"GO:1904192","regulation of cholangiocyte apoptotic process","BP",1,1,0.00366802111970918,1
+"GO:1904054","regulation of cholangiocyte proliferation","BP",1,1,0.00366802111970918,1
+"GO:1904195","regulation of granulosa cell proliferation","BP",1,1,0.00366802111970918,1
+"GO:1904212","regulation of iodide transmembrane transport","BP",1,1,0.00366802111970918,1
+"GO:1904201","regulation of iodide transport","BP",1,1,0.00366802111970918,1
+"GO:0000980","RNA polymerase II distal enhancer sequence-specific DNA binding","MF",46,3,0.00383930484219664,1

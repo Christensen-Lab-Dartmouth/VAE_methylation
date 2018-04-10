@@ -1,0 +1,51 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0034382","chylomicron remnant clearance","BP",7,2,5.0539790893076e-05,0.498448687682962
+"GO:0071830","triglyceride-rich lipoprotein particle clearance","BP",7,2,5.0539790893076e-05,0.498448687682962
+"GO:0044241","lipid digestion","BP",16,2,0.000216815537811495,1
+"GO:0006641","triglyceride metabolic process","BP",75,3,0.000261892924095991,1
+"GO:0006639","acylglycerol metabolic process","BP",86,3,0.000424507407511666,1
+"GO:0030955","potassium ion binding","MF",13,2,0.000442915079894583,1
+"GO:0006638","neutral lipid metabolic process","BP",87,3,0.000465412696241046,1
+"GO:0031420","alkali metal ion binding","MF",15,2,0.000591274159808018,1
+"GO:0034381","plasma lipoprotein particle clearance","BP",27,2,0.000739365071382102,1
+"GO:0034373","intermediate-density lipoprotein particle remodeling","BP",1,1,0.0012602463974787,1
+"GO:0004649","poly(ADP-ribose) glycohydrolase activity","MF",1,1,0.00135887219420888,1
+"GO:0044422","organelle part","CC",5463,16,0.0015838065754987,1
+"GO:0097006","regulation of plasma lipoprotein particle levels","BP",44,2,0.00178496052220962,1
+"GO:0043229","intracellular organelle","CC",7913,20,0.00192007163943381,1
+"GO:0036310","annealing helicase activity","MF",3,1,0.00300167540500846,1
+"GO:0003714","transcription corepressor activity","MF",157,3,0.00349952090385811,1
+"GO:0014015","positive regulation of gliogenesis","BP",37,2,0.00350341106089636,1
+"GO:0000733","DNA strand renaturation","BP",4,1,0.00362298327711543,1
+"GO:0018479","benzaldehyde dehydrogenase (NAD+) activity","MF",1,1,0.00376680469690814,1
+"GO:0010625","positive regulation of Schwann cell proliferation","BP",1,1,0.00405939637902912,1
+"GO:0044446","intracellular organelle part","CC",5332,15,0.00420020334955265,1
+"GO:0019075","virus maturation","BP",2,1,0.00438643883986725,1
+"GO:0097617","annealing activity","MF",4,1,0.00449961547979062,1
+"GO:1990698","palmitoleoyltransferase activity","MF",1,1,0.00459288837809578,1
+"GO:0031403","lithium ion binding","MF",1,1,0.00470430542888038,1
+"GO:0009443","pyridoxal 5'-phosphate salvage","BP",1,1,0.00470430542888038,1
+"GO:0008478","pyridoxal kinase activity","MF",1,1,0.00470430542888038,1
+"GO:0003712","transcription cofactor activity","MF",368,4,0.00484595354937324,1
+"GO:0042823","pyridoxal phosphate biosynthetic process","BP",2,1,0.00504443392079304,1
+"GO:0042822","pyridoxal phosphate metabolic process","BP",3,1,0.00544206063281547,1
+"GO:0031315","extrinsic component of mitochondrial outer membrane","CC",2,1,0.00553857346735866,1
+"GO:0034638","phosphatidylcholine catabolic process","BP",4,1,0.00563493834337953,1
+"GO:0016616","oxidoreductase activity, acting on the CH-OH group of donors, NAD or NADP as acceptor","MF",74,2,0.00603745303184842,1
+"GO:0007023","post-chaperonin tubulin folding pathway","BP",2,1,0.00609345937338368,1
+"GO:0044455","mitochondrial membrane part","CC",91,2,0.00632586045825049,1
+"GO:0097470","ribbon synapse","CC",2,1,0.00640545892471266,1
+"GO:0048386","positive regulation of retinoic acid receptor signaling pathway","BP",3,1,0.00644797205017439,1
+"GO:0033578","protein glycosylation in Golgi","BP",4,1,0.00687283260821024,1
+"GO:0017053","transcriptional repressor complex","CC",57,2,0.00711733915467262,1
+"GO:0000989","transcription factor activity, transcription factor binding","MF",410,4,0.0074033516451996,1
+"GO:0000988","transcription factor activity, protein binding","MF",414,4,0.00761069802382235,1
+"GO:0042816","vitamin B6 metabolic process","BP",4,1,0.00851799046629807,1
+"GO:0098574","cytoplasmic side of lysosomal membrane","CC",4,1,0.00863216494215118,1
+"GO:0007021","tubulin complex assembly","BP",4,1,0.00869309543469425,1
+"GO:0034370","triglyceride-rich lipoprotein particle remodeling","BP",8,1,0.00869977005446448,1
+"GO:0034372","very-low-density lipoprotein particle remodeling","BP",8,1,0.00869977005446448,1
+"GO:0008203","cholesterol metabolic process","BP",90,2,0.00886890549467954,1
+"GO:0004095","carnitine O-palmitoyltransferase activity","MF",3,1,0.00897010533033536,1
+"GO:0016614","oxidoreductase activity, acting on CH-OH group of donors","MF",91,2,0.00899066913050828,1
+"GO:0005662","DNA replication factor A complex","CC",8,1,0.00906546991911082,1

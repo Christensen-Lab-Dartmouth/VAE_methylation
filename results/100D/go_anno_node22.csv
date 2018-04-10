@@ -1,0 +1,51 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0000469","cleavage involved in rRNA processing","BP",14,2,0.00152116530231945,1
+"GO:0030695","GTPase regulator activity","MF",222,6,0.00171200324352555,1
+"GO:0060589","nucleoside-triphosphatase regulator activity","MF",233,6,0.00215299459811642,1
+"GO:0043153","entrainment of circadian clock by photoperiod","BP",16,2,0.00332023420851044,1
+"GO:0034499","late endosome to Golgi transport","BP",1,1,0.0033613735924878,1
+"GO:0019544","arginine catabolic process to glutamate","BP",1,1,0.00451021980417756,1
+"GO:0019493","arginine catabolic process to proline","BP",1,1,0.00451021980417756,1
+"GO:0010121","arginine catabolic process to proline via ornithine","BP",1,1,0.00451021980417756,1
+"GO:0004587","ornithine-oxo-acid transaminase activity","MF",1,1,0.00451021980417756,1
+"GO:0031260","pseudopodium membrane","CC",1,1,0.0046969381898891,1
+"GO:0009648","photoperiodism","BP",20,2,0.00481468497732026,1
+"GO:0090162","establishment of epithelial cell polarity","BP",17,2,0.00532172750220229,1
+"GO:0016028","rhabdomere","CC",1,1,0.00573051643801272,1
+"GO:0009649","entrainment of circadian clock","BP",22,2,0.00620932944186829,1
+"GO:0072331","signal transduction by p53 class mediator","BP",161,4,0.00626150385270959,1
+"GO:0005724","nuclear telomeric heterochromatin","CC",2,1,0.00707751571142055,1
+"GO:0031933","telomeric heterochromatin","CC",2,1,0.00707751571142055,1
+"GO:0032625","interleukin-21 production","BP",1,1,0.00831824073979097,1
+"GO:0072619","interleukin-21 secretion","BP",1,1,0.00831824073979097,1
+"GO:0072365","regulation of cellular ketone metabolic process by negative regulation of transcription from RNA polymerase II promoter","BP",1,1,0.00831958072118369,1
+"GO:0055129","L-proline biosynthetic process","BP",2,1,0.00874515910660395,1
+"GO:0061025","membrane fusion","BP",158,4,0.00935024583317635,1
+"GO:0004169","dolichyl-phosphate-mannose-protein mannosyltransferase activity","MF",3,1,0.00941990200814636,1
+"GO:2000312","regulation of kainate selective glutamate receptor activity","BP",2,1,0.00951438585845354,1
+"GO:0061470","T follicular helper cell differentiation","BP",2,1,0.00993701658240362,1
+"GO:1990262","anti-Mullerian hormone signaling pathway","BP",2,1,0.0100878640774518,1
+"GO:1902613","negative regulation of anti-Mullerian hormone signaling pathway","BP",2,1,0.0100878640774518,1
+"GO:1902612","regulation of anti-Mullerian hormone signaling pathway","BP",2,1,0.0100878640774518,1
+"GO:0072364","regulation of cellular ketone metabolic process by regulation of transcription from RNA polymerase II promoter","BP",2,1,0.0104521513977602,1
+"GO:0004689","phosphorylase kinase activity","MF",3,1,0.0112392216184048,1
+"GO:0005964","phosphorylase kinase complex","CC",3,1,0.0112392216184048,1
+"GO:0017137","Rab GTPase binding","MF",91,3,0.0120059089491288,1
+"GO:0032420","stereocilium","CC",31,2,0.0124019453458192,1
+"GO:0005173","stem cell factor receptor binding","MF",2,1,0.0126160730421396,1
+"GO:0007601","visual perception","BP",158,4,0.012821388795224,1
+"GO:0030688","preribosome, small subunit precursor","CC",5,1,0.0131307272289634,1
+"GO:0050953","sensory perception of light stimulus","BP",160,4,0.0132980046124291,1
+"GO:0006561","proline biosynthetic process","BP",3,1,0.0137005179769713,1
+"GO:2000107","negative regulation of leukocyte apoptotic process","BP",33,2,0.0154319990505654,1
+"GO:0032421","stereocilium bundle","CC",35,2,0.0158362930424317,1
+"GO:0008510","sodium:bicarbonate symporter activity","MF",3,1,0.0164871652083209,1
+"GO:0005911","cell-cell junction","CC",485,7,0.0171474136690655,1
+"GO:0015888","thiamine transport","BP",3,1,0.0172700421209984,1
+"GO:0035926","chemokine (C-C motif) ligand 2 secretion","BP",3,1,0.0173547132654768,1
+"GO:0017016","Ras GTPase binding","MF",192,4,0.0182502310133125,1
+"GO:0032963","collagen metabolic process","BP",92,3,0.0192869057616169,1
+"GO:0000459","exonucleolytic trimming involved in rRNA processing","BP",4,1,0.0194829573300652,1
+"GO:0000467","exonucleolytic trimming to generate mature 3'-end of 5.8S rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)","BP",4,1,0.0194829573300652,1
+"GO:0031125","rRNA 3'-end processing","BP",4,1,0.0194829573300652,1
+"GO:0021914","negative regulation of smoothened signaling pathway involved in ventral spinal cord patterning","BP",3,1,0.019617233155444,1

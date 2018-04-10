@@ -1,0 +1,51 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0050911","detection of chemical stimulus involved in sensory perception of smell","BP",252,8,8.83232846821279e-07,0.00871088395177487
+"GO:0004984","olfactory receptor activity","MF",252,8,8.83232846821279e-07,0.00871088395177487
+"GO:0050907","detection of chemical stimulus involved in sensory perception","BP",280,8,2.34411616255751e-06,0.0154125637688156
+"GO:0007608","sensory perception of smell","BP",270,8,3.26956779105943e-06,0.0161230561696618
+"GO:0009593","detection of chemical stimulus","BP",308,8,1.00639597130417e-05,0.0397023210679497
+"GO:0007606","sensory perception of chemical stimulus","BP",322,8,1.92679065070754e-05,0.0633432426420105
+"GO:0050906","detection of stimulus involved in sensory perception","BP",321,8,2.9215150546193e-05,0.0823241206462368
+"GO:0051606","detection of stimulus","BP",438,9,0.000100709526759396,0.248311926916137
+"GO:0036157","outer dynein arm","CC",5,2,0.000444409214376966,0.973996861509518
+"GO:0036126","sperm flagellum","CC",41,3,0.000816405011923695,1
+"GO:0010921","regulation of phosphatase activity","BP",88,4,0.00165376120605772,1
+"GO:0060089","molecular transducer activity","MF",1241,16,0.00180753767606675,1
+"GO:0004872","receptor activity","MF",1241,16,0.00180753767606675,1
+"GO:0008016","regulation of heart contraction","BP",185,6,0.00307368598869207,1
+"GO:0035303","regulation of dephosphorylation","BP",108,4,0.00355632189396826,1
+"GO:0005858","axonemal dynein complex","CC",14,2,0.00380594208228557,1
+"GO:0022843","voltage-gated cation channel activity","MF",113,5,0.00395042770062507,1
+"GO:0005245","voltage-gated calcium channel activity","MF",33,3,0.00399269266807186,1
+"GO:0015467","G-protein activated inward rectifier potassium channel activity","MF",10,2,0.00422996029723218,1
+"GO:0099600","transmembrane receptor activity","MF",997,13,0.00461541876345801,1
+"GO:0060047","heart contraction","BP",210,6,0.00518591904252629,1
+"GO:1903318","negative regulation of protein maturation","BP",23,2,0.00528064835957541,1
+"GO:0010955","negative regulation of protein processing","BP",23,2,0.00528064835957541,1
+"GO:0003015","heart process","BP",213,6,0.00562593021144162,1
+"GO:0097598","sperm cytoplasmic droplet","CC",1,1,0.00606045997675141,1
+"GO:0031514","motile cilium","CC",85,3,0.00661745115607465,1
+"GO:0000381","regulation of alternative mRNA splicing, via spliceosome","BP",23,2,0.00712456395648771,1
+"GO:0044447","axoneme part","CC",23,2,0.00882612471789363,1
+"GO:0034703","cation channel complex","CC",146,5,0.00907789123628167,1
+"GO:0000380","alternative mRNA splicing, via spliceosome","BP",30,2,0.00975585989112542,1
+"GO:1903522","regulation of blood circulation","BP",243,6,0.0100009477964853,1
+"GO:0034704","calcium channel complex","CC",49,3,0.0100076407959931,1
+"GO:0031449","regulation of slow-twitch skeletal muscle fiber contraction","BP",1,1,0.0100527552419849,1
+"GO:0007600","sensory perception","BP",665,9,0.0104425983218856,1
+"GO:0005242","inward rectifier potassium channel activity","MF",19,2,0.0106970720570704,1
+"GO:0022832","voltage-gated channel activity","MF",155,5,0.0115088390756736,1
+"GO:0005244","voltage-gated ion channel activity","MF",155,5,0.0115088390756736,1
+"GO:0004930","G-protein coupled receptor activity","MF",605,8,0.0116634526714163,1
+"GO:0048006","antigen processing and presentation, endogenous lipid antigen via MHC class Ib","BP",1,1,0.0116751297051905,1
+"GO:0010107","potassium ion import","BP",25,2,0.0117232337247314,1
+"GO:1903027","regulation of opsonization","BP",2,1,0.0125207505135559,1
+"GO:0001982","baroreceptor response to decreased systemic arterial blood pressure","BP",1,1,0.0125471683050647,1
+"GO:0001988","positive regulation of heart rate involved in baroreceptor response to decreased systemic arterial blood pressure","BP",1,1,0.0125471683050647,1
+"GO:0014724","regulation of twitch skeletal muscle contraction","BP",2,1,0.0128612627244005,1
+"GO:0097223","sperm part","CC",109,3,0.0128909187309485,1
+"GO:0045423","regulation of granulocyte macrophage colony-stimulating factor biosynthetic process","BP",4,1,0.01357109327426,1
+"GO:0008386","cholesterol monooxygenase (side-chain-cleaving) activity","MF",1,1,0.0136881876592081,1
+"GO:0048024","regulation of mRNA splicing, via spliceosome","BP",34,2,0.0137581721386965,1
+"GO:0016021","integral component of membrane","CC",3868,32,0.0137771543229423,1
+"GO:0004864","protein phosphatase inhibitor activity","MF",26,2,0.0139217360399956,1

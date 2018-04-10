@@ -1,0 +1,352 @@
+
+     
+     
+     
+### Setup the environment we need ###
+# install.packages('glmnet')
+# install.packages('data.table')
+require(glmnet)
+require(data.table)
+
+#dir = '/Users/alexandertitus/Documents/github/DNAm_data_generation/code'
+dir = 'C:/Users/atitus/Documents/github/DNAm_data_generation/results'
+setwd(dir)
+
+
+# Load all the data and make variables
+### Load our data to work with ###
+vae.file = '../results/encoded_methyl_onehidden_warmup_batchnorm_300K-100.tsv'
+BRCA.covFile = '../BRCAtarget_covariates.csv'
+tSNE.file = '../results/vae_tsne_out_300K-100_3d.tsv'
+
+tSNE_features = data.frame(fread(tSNE.file), row.names=1)
+colnames(tSNE_features) = tSNE_features[1, ]
+tSNE_features = tSNE_features[2:nrow(tSNE_features), ]
+tSNE_features$Basename = rownames(tSNE_features)
+
+vae_features = data.frame(fread(vae.file), row.names=1)
+colnames(vae_features) = vae_features[1, ]
+vae_features = vae_features[2:nrow(vae_features), ]
+vae_features$Basename = rownames(vae_features)
+
+BRCA.covs = data.frame(fread(BRCA.covFile), row.names=1)
+
+full.data = merge(vae_features, BRCA.covs, by='Basename')
+full.data = merge(full.data, tSNE_features, by='Basename')
+full.data$BasalVother = ifelse(full.data$PAM50.RNAseq == "Basal", 1, 0)
+full.data$NormalVother = ifelse(full.data$PAM50.RNAseq == "Normal", 1, 0)
+full.data$Her2Vother = ifelse(full.data$PAM50.RNAseq == "Her2", 1, 0)
+full.data$LumAVother = ifelse(full.data$PAM50.RNAseq == "LumA", 1, 0)
+full.data$LumBVother = ifelse(full.data$PAM50.RNAseq == "LumB", 1, 0)
+full.data$LumVother = ifelse(full.data$PAM50.RNAseq == "LumA" | 
+                                  full.data$PAM50.RNAseq == "LumB", 1, 0)
+
+
+
+
+#########################
+# Split data
+set.seed(1234)
+train.prob = rbinom(nrow(full.data), 1, 0.5)
+full.data$TranVtest = train.prob
+
+
+
+#########################
+# Build model - logistic regression "Classify as normal" - 3D
+temp.data = full.data[, c('NormalVother', '1.y', '2.y', '3.y')]
+
+train.data = temp.data[train.prob == 1, ]
+test.data = temp.data[train.prob == 0, ]
+
+model <- glm(factor(NormalVother) ~., family=binomial(link='logit'), data=train.data) 
+summary(model)
+
+# Testing the model
+fitted.results <- predict(model,newdata=test.data,type='response')
+fitted.results <- ifelse(fitted.results > 0.5,1,0)
+misClasificError <- mean(fitted.results != test.data$NormalVother)
+normal3dAccuracy = 1-misClasificError
+print(paste('3D Accuracy = ',normal3dAccuracy))
+
+
+
+
+#########################
+# Build model - logistic regression "Classify as normal" - 2D
+temp.data = full.data[, c('NormalVother', '1.y', '3.y')]
+
+train.data = temp.data[train.prob == 1, ]
+test.data = temp.data[train.prob == 0, ]
+
+model <- glm(factor(NormalVother) ~., family=binomial(link='logit'), data=train.data) 
+summary(model)
+
+#########################
+# Testing the model
+fitted.results <- predict(model,newdata=test.data,type='response')
+fitted.results <- ifelse(fitted.results > 0.5,1,0)
+misClasificError <- mean(fitted.results != test.data$NormalVother)
+normal2dAccuracy = 1-misClasificError
+print(paste('2D Accuracy = ',normal2dAccuracy))
+
+
+
+
+#########################
+# Build model - logistic regression "Classify as Luminal" - 3D
+temp.data = full.data[, c('LumVother', '1.y', '2.y', '3.y', 'PAM50.RNAseq')]
+
+train.data = temp.data[train.prob == 1, ]
+test.data = temp.data[train.prob == 0, ]
+table(train.data$PAM50.RNAseq);table(test.data$PAM50.RNAseq) 
+
+train.data = train.data[, c('LumVother', '1.y', '2.y', '3.y')]
+test.data = test.data[, c('LumVother', '1.y', '2.y', '3.y')]
+
+model <- glm(factor(LumVother) ~., family=binomial(link='logit'), data=train.data) 
+
+summary(model)
+
+# Testing the model
+fitted.results <- predict(model, newdata=test.data, type='response')
+fitted.results <- ifelse(fitted.results > 0.5,1,0)
+misClasificError <- mean(fitted.results != test.data$LumVother)
+print(paste('Accuracy',1-misClasificError))
+
+
+
+#########################
+# Build model - logistic regression "Classify as Luminal" - 2D
+temp.data = full.data[, c('LumVother', '1.y', '2.y', 'PAM50.RNAseq')]
+
+train.data = temp.data[train.prob == 1, ]
+test.data = temp.data[train.prob == 0, ]
+table(train.data$PAM50.RNAseq);table(test.data$PAM50.RNAseq) 
+
+train.data = train.data[, c('LumVother', '1.y', '2.y')]
+test.data = test.data[, c('LumVother', '1.y', '2.y')]
+
+model <- glm(factor(LumVother) ~., family=binomial(link='logit'), data=train.data) 
+
+summary(model)
+
+# Testing the model
+fitted.results <- predict(model, newdata=test.data, type='response')
+fitted.results <- ifelse(fitted.results > 0.5,1,0)
+misClasificError <- mean(fitted.results != test.data$LumVother)
+print(paste('Accuracy',1-misClasificError))
+
+
+
+#########################
+# Build model - logistic regression "Classify as Luminal" - 3D
+temp.data = full.data[, c('LumAVother', '1.y', '2.y', '3.y', 'PAM50.RNAseq')]
+
+train.data = temp.data[train.prob == 1, ]
+test.data = temp.data[train.prob == 0, ]
+table(train.data$PAM50.RNAseq);table(test.data$PAM50.RNAseq) 
+
+train.data = train.data[, c('LumAVother', '1.y', '2.y', '3.y')]
+test.data = test.data[, c('LumAVother', '1.y', '2.y', '3.y')]
+
+model <- glm(factor(LumAVother) ~., family=binomial(link='logit'), data=train.data) 
+
+summary(model)
+
+# Testing the model
+fitted.results <- predict(model, newdata=test.data, type='response')
+fitted.results <- ifelse(fitted.results > 0.5,1,0)
+misClasificError <- mean(fitted.results != test.data$LumAVother)
+print(paste('Accuracy',1-misClasificError))
+
+
+
+#########################
+# Build model - logistic regression "Classify as Luminal" - 2D
+temp.data = full.data[, c('LumAVother', '1.y', '2.y', 'PAM50.RNAseq')]
+
+train.data = temp.data[train.prob == 1, ]
+test.data = temp.data[train.prob == 0, ]
+table(train.data$PAM50.RNAseq);table(test.data$PAM50.RNAseq) 
+
+train.data = train.data[, c('LumAVother', '1.y', '2.y')]
+test.data = test.data[, c('LumAVother', '1.y', '2.y')]
+
+model <- glm(factor(LumAVother) ~., family=binomial(link='logit'), data=train.data) 
+
+summary(model)
+
+# Testing the model
+fitted.results <- predict(model, newdata=test.data, type='response')
+fitted.results <- ifelse(fitted.results > 0.5,1,0)
+misClasificError <- mean(fitted.results != test.data$LumAVother)
+print(paste('Accuracy',1-misClasificError))
+
+
+
+#########################
+# Build model - logistic regression "Classify as Luminal" - 3D
+temp.data = full.data[, c('LumBVother', '1.y', '2.y', '3.y', 'PAM50.RNAseq')]
+
+train.data = temp.data[train.prob == 1, ]
+test.data = temp.data[train.prob == 0, ]
+table(train.data$PAM50.RNAseq);table(test.data$PAM50.RNAseq) 
+
+train.data = train.data[, c('LumBVother', '1.y', '2.y', '3.y')]
+test.data = test.data[, c('LumBVother', '1.y', '2.y', '3.y')]
+
+model <- glm(factor(LumBVother) ~., family=binomial(link='logit'), data=train.data) 
+
+summary(model)
+
+# Testing the model
+fitted.results <- predict(model, newdata=test.data, type='response')
+fitted.results <- ifelse(fitted.results > 0.5,1,0)
+misClasificError <- mean(fitted.results != test.data$LumBVother)
+print(paste('Accuracy',1-misClasificError))
+```
+
+## 2D
+```{r}
+#########################
+# Build model - logistic regression "Classify as Luminal" - 2D
+temp.data = full.data[, c('LumBVother', '1.y', '3.y', 'PAM50.RNAseq')]
+
+train.data = temp.data[train.prob == 1, ]
+test.data = temp.data[train.prob == 0, ]
+table(train.data$PAM50.RNAseq);table(test.data$PAM50.RNAseq) 
+
+train.data = train.data[, c('LumBVother', '1.y', '3.y')]
+test.data = test.data[, c('LumBVother', '1.y', '3.y')]
+
+model <- glm(factor(LumBVother) ~., family=binomial(link='logit'), data=train.data) 
+
+summary(model)
+
+# Testing the model
+fitted.results <- predict(model, newdata=test.data, type='response')
+fitted.results <- ifelse(fitted.results > 0.5,1,0)
+misClasificError <- mean(fitted.results != test.data$LumBVother)
+print(paste('Accuracy',1-misClasificError))
+
+# Basal-like classification
+
+## 3D
+```{r}
+#########################
+# Build model - logistic regression "Classify as Basal" - 3D
+temp.data = full.data[, c('BasalVother', '1.y', '2.y', '3.y', 'PAM50.RNAseq')]
+
+train.data = temp.data[train.prob == 1, ]
+test.data = temp.data[train.prob == 0, ]
+table(train.data$PAM50.RNAseq);table(test.data$PAM50.RNAseq) 
+
+train.data = train.data[, c('BasalVother', '1.y', '2.y', '3.y')]
+test.data = test.data[, c('BasalVother', '1.y', '2.y', '3.y')]
+
+model <- glm(factor(BasalVother) ~., family=binomial(link='logit'), data=train.data) 
+
+summary(model)
+
+# Testing the model
+fitted.results <- predict(model, newdata=test.data, type='response')
+fitted.results <- ifelse(fitted.results > 0.5,1,0)
+misClasificError <- mean(fitted.results != test.data$BasalVother)
+basalAccuracy = 1-misClasificError
+print(paste('Accuracy = ', basalAccuracy))
+```
+
+## 2D
+```{r}
+#########################
+# Build model - logistic regression "Classify as Basal" - 2D
+temp.data = full.data[, c('BasalVother', '1.y', '3.y', 'PAM50.RNAseq')]
+
+train.data = temp.data[train.prob == 1, ]
+test.data = temp.data[train.prob == 0, ]
+table(train.data$PAM50.RNAseq);table(test.data$PAM50.RNAseq) 
+
+train.data = train.data[, c('BasalVother', '1.y', '3.y')]
+test.data = test.data[, c('BasalVother', '1.y', '3.y')]
+
+model <- glm(factor(BasalVother) ~., family=binomial(link='logit'), data=train.data) 
+
+summary(model)
+
+# Testing the model
+fitted.results <- predict(model, newdata=test.data, type='response')
+fitted.results <- ifelse(fitted.results > 0.5,1,0)
+misClasificError <- mean(fitted.results != test.data$BasalVother)
+basalAccuracy = 1-misClasificError
+print(paste('Accuracy = ', basalAccuracy))
+```
+
+# Her2 classification
+
+## 3D
+```{r}
+#########################
+# Build model - logistic regression "Classify as Her2" - 3D
+temp.data = full.data[, c('Her2Vother', '1.y', '2.y', '3.y', 'PAM50.RNAseq')]
+
+train.data = temp.data[train.prob == 1, ]
+test.data = temp.data[train.prob == 0, ]
+table(train.data$PAM50.RNAseq);table(test.data$PAM50.RNAseq) 
+
+train.data = train.data[, c('Her2Vother', '1.y', '2.y', '3.y')]
+test.data = test.data[, c('Her2Vother', '1.y', '2.y', '3.y')]
+
+model <- glm(factor(Her2Vother) ~., family=binomial(link='logit'), data=train.data) 
+
+summary(model)
+
+# Testing the model
+fitted.results <- predict(model, newdata=test.data, type='response')
+fitted.results <- ifelse(fitted.results > 0.5,1,0)
+misClasificError <- mean(fitted.results != test.data$Her2Vother)
+Her2Accuracy = 1-misClasificError
+print(paste('Accuracy = ', Her2Accuracy))
+```
+
+## 2D
+```{r}
+#########################
+# Build model - logistic regression "Classify as Her2" - 2D
+temp.data = full.data[, c('Her2Vother',  '3.y', 'PAM50.RNAseq')]
+
+train.data = temp.data[train.prob == 1, ]
+test.data = temp.data[train.prob == 0, ]
+table(train.data$PAM50.RNAseq);table(test.data$PAM50.RNAseq) 
+
+train.data = train.data[, c('Her2Vother',  '3.y')]
+test.data = test.data[, c('Her2Vother',  '3.y')]
+
+model <- glm(factor(Her2Vother) ~., family=binomial(link='logit'), data=train.data) 
+
+summary(model)
+
+# Testing the model
+fitted.results <- predict(model, newdata=test.data, type='response')
+fitted.results <- ifelse(fitted.results > 0.5,1,0)
+misClasificError <- mean(fitted.results != test.data$Her2Vother)
+Her2Accuracy = 1-misClasificError
+print(paste('Accuracy = ', Her2Accuracy))
+```
+
+
+# Correlation testing
+```{r}
+#########################
+# Latent activation correlation with age and survival
+results = cor.test(BRCA.covs$age.Dx, vae_features$`1`)
+
+w = sapply(c(1:100), function(x) cor(BRCA.covs[,1], vae_features[,x], method = "pearson", use = 'pairwise.complete.obs') )
+w
+results$estimate; results$p.value
+```
+
+
+
+
+
