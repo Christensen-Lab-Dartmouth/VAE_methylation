@@ -41,9 +41,9 @@
      
      ## VAE nodes
      # 2D analyses
-     vae.file = 'results/VAE_training/encoded_methyl_onehidden_warmup_batchnorm_100k_2.tsv'
+     #vae.file = 'results/VAE_training/encoded_methyl_onehidden_warmup_batchnorm_100k_2.tsv'
      # 3D analyses
-     vae.file = 'results/VAE_training/encoded_methyl_onehidden_warmup_batchnorm_100k_3.tsv'
+     #vae.file = 'results/VAE_training/encoded_methyl_onehidden_warmup_batchnorm_100k_3.tsv'
      # 100D analyses
      vae.file = 'results/VAE_training/encoded_methyl_onehidden_warmup_batchnorm_100k_100.tsv'
      
@@ -90,21 +90,21 @@
 
 #####################  
      # 2D analyses
-     correlations1 = node_corrs(1, betas, vae)
-     correlations1 = subset_cors(threshold, correlations1)
+     #correlations1 = node_corrs(1, betas, vae)
+     #correlations1 = subset_cors(threshold, correlations1)
      
-     correlations2 = node_corrs(2, betas, vae)
-     correlations2 = subset_cors(threshold, correlations2)  
+     #correlations2 = node_corrs(2, betas, vae)
+     #correlations2 = subset_cors(threshold, correlations2)  
      
      # 3D analyses
-     correlations1 = node_corrs(1, betas, vae)
-     correlations1 = subset_cors(threshold, correlations1)
+     #correlations1 = node_corrs(1, betas, vae)
+     #correlations1 = subset_cors(threshold, correlations1)
      
-     correlations2 = node_corrs(2, betas, vae)
-     correlations2 = subset_cors(threshold, correlations2)
+     #correlations2 = node_corrs(2, betas, vae)
+     #correlations2 = subset_cors(threshold, correlations2)
      
-     correlations3 = node_corrs(3, betas, vae)
-     correlations3 = subset_cors(threshold, correlations3)
+     #correlations3 = node_corrs(3, betas, vae)
+     #correlations3 = subset_cors(threshold, correlations3)
      
      # 100D analyses
      # ER-
@@ -127,6 +127,7 @@
      correlations93 = node_corrs(93, betas, vae)
      correlations93 = subset_cors(threshold, correlations93)
      
+     
      # ER+/-
      correlations63 = node_corrs(63, betas, vae)
      correlations63 = subset_cors(threshold, correlations63)
@@ -147,37 +148,40 @@
           file.name = paste('results/correlation_elbow_node', node, '.png', sep = '')
           
           png(file.name, width = 1000, height = 1000, res = 100)
-          plot(abs(cors), main=paste('Node ', node, sep = ''), 
+          plot(abs(cors), main=paste('Dimension ', node, sep = ''), 
                ylab = '|Correlation|', xlab='Index', ylim = c(threshold, 0.9))
           if(plot_line == T){
                abline(h = line)   
-               abline(v = 1000, col = "black")
-               abline(v = 5000, col = "green")
+               abline(v = 1000, col = "green")
           }
           dev.off()
      }
 
 ##################### 
+     dimensions = c(24, 35, 43, 91, 93, 22, 63)
+     thresholds = c(0.7, 0.6, 0.7, 0.625, 0.6, 0.625, 0.675)
+     #thresholds = c(0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6)
+     
      # 2D analyses
-     plot_corr_elbow(correlations1, 1, threshold, plot_line = T, line = 0.6)
-     plot_corr_elbow(correlations2, 2, threshold, plot_line = T, line = 0.8)
+     #plot_corr_elbow(correlations1, 1, threshold, plot_line = T, line = 0.6)
+     #plot_corr_elbow(correlations2, 2, threshold, plot_line = T, line = 0.8)
      
      # 3D analyses
-     plot_corr_elbow(correlations1, 1, threshold, plot_line = T, line = 0.65)
-     plot_corr_elbow(correlations2, 2, threshold, plot_line = T, line = 0.75)
-     plot_corr_elbow(correlations3, 3, threshold, plot_line = T, line = 0.7)
+     #plot_corr_elbow(correlations1, 1, threshold, plot_line = T, line = 0.65)
+     #plot_corr_elbow(correlations2, 2, threshold, plot_line = T, line = 0.75)
+     #plot_corr_elbow(correlations3, 3, threshold, plot_line = T, line = 0.7)
      
      # 100D analyses
-     plot_corr_elbow(correlations24, 24, threshold, plot_line = T, line = 0.7)
-     plot_corr_elbow(correlations35, 35, threshold, plot_line = T, line = 0.625)
-     plot_corr_elbow(correlations43, 43, threshold, plot_line = T, line = 0.7)
-     plot_corr_elbow(correlations47, 47, threshold, plot_line = T, line = 0.55)
-     plot_corr_elbow(correlations91, 91, threshold, plot_line = T, line = 0.625)
-     plot_corr_elbow(correlations93, 93, threshold, plot_line = T, line = 0.6)
-     plot_corr_elbow(correlations63, 63, threshold, plot_line = T, line = 0.65)
-     plot_corr_elbow(correlations37, 37, threshold, plot_line = T, line = 0.6)
-     plot_corr_elbow(correlations22, 22, threshold, plot_line = T, line = 0.65)
-
+     plot_corr_elbow(correlations24, 24, threshold, plot_line = T, line = thresholds[1])
+     plot_corr_elbow(correlations35, 35, threshold, plot_line = T, line = thresholds[2])
+     plot_corr_elbow(correlations43, 43, threshold, plot_line = T, line = thresholds[3])
+     plot_corr_elbow(correlations91, 91, threshold, plot_line = T, line = thresholds[4])
+     plot_corr_elbow(correlations93, 93, threshold, plot_line = T, line = thresholds[5])
+     plot_corr_elbow(correlations22, 22, threshold, plot_line = T, line = thresholds[6])
+     plot_corr_elbow(correlations63, 63, threshold, plot_line = T, line = thresholds[7])
+     
+     
+     
      
 #####################
 # Genomic context
@@ -244,24 +248,22 @@
 
 #####################
      # 2D analyses
-     go_pathway_analysis(correlations1, 1, threshold = 0.6, ann450k)
-     go_pathway_analysis(correlations2, 2, threshold = 0.8, ann450k)
+     #go_pathway_analysis(correlations1, 1, threshold = 0.6, ann450k)
+     #go_pathway_analysis(correlations2, 2, threshold = 0.8, ann450k)
      
      # 3D analyses
-     go_pathway_analysis(correlations1, 1, threshold = 0.65, ann450k)
-     go_pathway_analysis(correlations2, 2, threshold = 0.75, ann450k)
-     go_pathway_analysis(correlations3, 3, threshold = 0.7, ann450k)
+     #go_pathway_analysis(correlations1, 1, threshold = 0.65, ann450k)
+     #go_pathway_analysis(correlations2, 2, threshold = 0.75, ann450k)
+     #go_pathway_analysis(correlations3, 3, threshold = 0.7, ann450k)
      
      # 100D analyses
-     go_pathway_analysis(correlations24, 24, threshold = 0.7, ann450k)
-     go_pathway_analysis(correlations35, 35, threshold = 0.625, ann450k)
-     go_pathway_analysis(correlations43, 43, threshold = 0.7, ann450k)
-     go_pathway_analysis(correlations47, 47, threshold = 0.55, ann450k)
-     go_pathway_analysis(correlations91, 91, threshold = 0.625, ann450k)
-     go_pathway_analysis(correlations93, 93, threshold = 0.6, ann450k)
-     go_pathway_analysis(correlations63, 63, threshold = 0.65, ann450k)
-     go_pathway_analysis(correlations37, 37, threshold = 0.6, ann450k)
-     go_pathway_analysis(correlations22, 22, threshold = 0.65, ann450k)
+     go_pathway_analysis(correlations24, dimensions[1], threshold = thresholds[1], ann450k)
+     go_pathway_analysis(correlations35, dimensions[2], threshold = thresholds[2], ann450k)
+     go_pathway_analysis(correlations43, dimensions[3], threshold = thresholds[3], ann450k)
+     go_pathway_analysis(correlations91, dimensions[4], threshold = thresholds[4], ann450k)
+     go_pathway_analysis(correlations93, dimensions[5], threshold = thresholds[5], ann450k)
+     go_pathway_analysis(correlations22, dimensions[6], threshold = thresholds[6], ann450k)
+     go_pathway_analysis(correlations63, dimensions[7], threshold = thresholds[7], ann450k)
      
      
 #####################
@@ -274,7 +276,7 @@
      rownames(ann450k) = ann450k$Name
      ann450k = ann450k[rownames(ann450k) %in% colnames(betas), ]
      
-     enhancer_analysis = function(correlations_list, node_list, threshold, annotations, enhancer = 'Enhancer'){
+     enhancer_analysis = function(correlations_list, node_list, thresholds, annotations, enhancer = 'Enhancer'){
           
           enhancerResults = c('Node', 'Est', 'Conf95low', 'Conf95high', 'Pvalue')
           
@@ -282,7 +284,8 @@
                correlations = correlations_list[[i]]
                
                nodeName = paste('VAE', node_list[i], sep='')
-
+               threshold = thresholds[i]
+               
                cor.sub = correlations[(correlations$correlations >= threshold | 
                                             correlations$correlations < -1*threshold), ]
                
@@ -309,6 +312,41 @@
                     nodeNoEnhancer = nrow(anno.sub[anno.sub$Enhancer == '', ]); nodeNoEnhancer
                     annoEnhancer = nrow(ann450k[ann450k$Enhancer == 'TRUE', ]); annoEnhancer
                     annoNoEnhancer = nrow(ann450k[ann450k$Enhancer == '', ]); annoNoEnhancer
+               } else if (enhancer == 'OpenSea'){
+                    nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
+                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
+                    annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
+                    annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+               } else if (enhancer == 'Island'){
+                    nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
+                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
+                    annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
+                    annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+               } else if (enhancer == 'S_Shore'){
+                    nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
+                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
+                    annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
+                    annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+               } else if (enhancer == 'N_Shore'){
+                    nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
+                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
+                    annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
+                    annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+               } else if (enhancer == 'N_Shelf'){
+                    nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
+                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
+                    annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
+                    annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+               } else if (enhancer == 'S_Shelf'){
+                    nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
+                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
+                    annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
+                    annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+               } else if (enhancer == 'DHS'){
+                    nodeEnhancer = nrow(anno.sub[anno.sub$DHS == 'TRUE', ]); nodeEnhancer
+                    nodeNoEnhancer = nrow(anno.sub[anno.sub$DHS == '', ]); nodeNoEnhancer
+                    annoEnhancer = nrow(ann450k[ann450k$DHS == 'TRUE', ]); annoEnhancer
+                    annoNoEnhancer = nrow(ann450k[ann450k$DHS == '', ]); annoNoEnhancer
                } else{
                     nodeEnhancer = nrow(anno.sub[anno.sub[[enhancer]] == 1, ]); nodeEnhancer
                     nodeNoEnhancer = nrow(anno.sub[anno.sub[[enhancer]] == 0, ]); nodeNoEnhancer
@@ -374,7 +412,7 @@
                        legend.position = "bottom",
                        legend.direction = "horizontal",
                        legend.key.size= unit(0.2, "cm"),
-                       legend.margin = unit(0, "cm"),
+                       #legend.margin = unit(0, "cm"),
                        legend.title = element_text(face="italic"),
                        plot.margin=unit(c(10,5,5,5),"mm"),
                        strip.background=element_rect(colour="#f0f0f0",fill="#f0f0f0"),
@@ -399,51 +437,69 @@
 # Enhancer analyses
 #####################
      library(ggplot2)
-     enhancer.names = colnames(ann450k)[47:63]
-     enhancer.names = c('Enhancer', enhancer.names)
+     enhancer.names = colnames(ann450k)[46:64]
+     enhancer.names = c('Enhancer', 'OpenSea', 'Island', 'N_Shore', 'S_Shore', 'N_Shelf', 'S_Shelf', 'DHS',
+                        enhancer.names)
      enhancer_results.out = data.frame(Node = 0, Est = 0, Conf95low = 0, 
                                        Conf95high = 0, Pvalue = 0, Mark = 0)
+     
+     
+#####################
+# Plots by mark
+#####################
      for(name in enhancer.names){
-     # 100D analyses
-     correlations_list = list(correlations24, correlations35, correlations43,
-                              correlations91, correlations93,
-                              correlations63, correlations37, correlations22)
-     node_list = c(24, 35, 43, 91, 93, 63, 37, 22)
-     
-     enhancer = name
-     enhancer_results = enhancer_analysis(correlations_list, node_list, threshold, ann450k, 
-                                          enhancer = enhancer)
-     enhancer_results$Node = factor(enhancer_results$Node, 
-                                    levels = enhancer_results$Node[order(as.numeric(substr(enhancer_results$Node, 
-                                                                                           4, 100)))])
-     enhancer_results$Mark = rep(name, nrow(enhancer_results))
-     enhancer_results.out = rbind(enhancer_results.out, enhancer_results)
-     
-     # 100D analyses
-     enhancer_results$Node = factor(enhancer_results$Node, levels = c("VAE24", "VAE35", "VAE43",
-                                                                      "VAE91", "VAE93",
-                                                                      "VAE22", "VAE37", "VAE63"))
-
-     fp <- ggplot(data=enhancer_results, aes(x=Est, 
-                                            y=factor(Node), 
-                                            xmin=Conf95low, 
-                                            xmax=Conf95high)) +
-          geom_point(color = c('black', 'black', 'black',
-                               'lightgrey', 'lightgrey',
-                               'orange', 'orange', 'orange')) +
-          geom_text(aes(label=format(round(Est, 2), nsmall = 2)), hjust=0, vjust=-1) +
-          geom_errorbarh(height=.02) +
-          ylab('VAE latent dimension') +
-          geom_vline(xintercept=1, color='black', linetype='dashed') +
-          scale_x_continuous(limits=c(0, max(enhancer_results$Conf95high)), name='Odds ratio w/ 95% CI') +
-          ggtitle(paste0(enhancer)) + theme_Publication()
-     
-     
-     # 100D analyses
-     file.name = paste0('results/OR_enhancer_by_node_100D_', enhancer, '.png')
-     png(file.name, width = 2000, height = 2500, res = 300)
-     print(fp)
-     dev.off()
+          # 100D analyses
+          correlations_list = list(correlations24, correlations35, correlations43,
+                                   correlations91, correlations93, 
+                                   correlations22, correlations63)
+          dimensions = dimensions
+          thresholds = thresholds
+          
+          enhancer = name
+          enhancer_results = enhancer_analysis(correlations_list, dimensions, thresholds, ann450k, 
+                                               enhancer = enhancer)
+          
+          enhancer_results$Node = factor(enhancer_results$Node, 
+                                         levels = enhancer_results$Node[order(as.numeric(substr(enhancer_results$Node, 
+                                                                                                4, 100)))])
+          enhancer_results$Mark = rep(name, nrow(enhancer_results))
+          enhancer_results.out = rbind(enhancer_results.out, enhancer_results)
+          
+          # 100D analyses
+          enhancer_results$Node = factor(enhancer_results$Node, levels = c("VAE24", "VAE35", "VAE43",
+                                                                           "VAE91", "VAE93",
+                                                                           "VAE22", "VAE63"))
+          # # Log-odds
+          # fp <- ggplot(data=enhancer_results, aes(x=log(Est), 
+          #                                        y=factor(Node), 
+          #                                        xmin=log(Conf95low), 
+          #                                        xmax=log(Conf95high))) +
+          #      geom_point() +
+          #      geom_text(aes(label=format(round(log(Est), 2), nsmall = 2)), hjust=0, vjust=-0.5) +
+          #      geom_errorbarh(height=.02) +
+          #      ylab('VAE latent dimension') +
+          #      geom_vline(xintercept=log(1), color='black', linetype='dashed') +
+          #      scale_x_continuous(limits=c(min(-log(1.5), max(-log(70), min(log(enhancer_results$Conf95high)))), 
+          #                                  max(log(1.5), min(log(70), max(log(enhancer_results$Conf95high))))),
+          #                         name='Log-odds ratio w/ 95% CI') +
+          #      ggtitle(paste0(enhancer)) + theme_Publication()
+          fp <- ggplot(data=enhancer_results, aes(x = factor(Node), 
+                                                  y = Est, 
+                                                  ymin = Conf95low, 
+                                                  ymax = Conf95high)) +
+               geom_pointrange() +
+               geom_text(aes(label=format(round(Est, 2), nsmall = 2)), hjust=0, vjust=-0.5) +
+               geom_hline(aes(fill=factor(Node)), yintercept =1, linetype=2)+
+               xlab('VAE latent dimension')+ ylab("Log-Odds Ratio (95% Confidence Interval)")+
+               geom_errorbar(aes(ymin=Conf95low, ymax=Conf95high), width=0.1, cex=1) + 
+               coord_flip() + theme_Publication() + ggtitle(paste0(enhancer)) +
+               scale_y_log10(breaks=c(0.5,1,2),position="top") 
+          
+          # 100D analyses
+          file.name = paste0('results/OR_enhancer_by_mark_100D_', enhancer, '.png')
+          png(file.name, width = 2500, height = 3000, res = 300)
+          print(fp)
+          dev.off()
      }
      
      enhancer_results.out = enhancer_results.out[2:nrow(enhancer_results.out), ]
@@ -451,14 +507,241 @@
 
      
 #####################
+# Plots by latent dimension
+#####################
+     
+     for(latdim in unique(enhancer_results.out$Node)){
+          
+          temp = enhancer_results.out[enhancer_results.out$Node == latdim, ]
+          temp$Mark = factor(temp$Mark, levels = rev(c('N_Shelf', 'N_Shore', 'Island', 'S_Shore', 'S_Shelf', 
+                                                   'OpenSea', 'Enhancer', 'DHS', 'Br_myo_H3K9me3',
+                                                   'Br_myo_H3K4me3', 'Br_myo_H3K36me3', 'Br_myo_H3K9ac',
+                                                   
+                                                   'Br_myo_H3K27me3', 'Br_myo_H3K4me1',
+                                                   'HMEC_H3K4me1', 'HMEC_H3K4me2', 'HMEC_H3K4me3',
+                                                   'HMEC_H3K9ac', 'HMEC_H3K27ac', 'HMEC_H3K36me3', 
+                                                   'HMEC_H3K79me2', 
+                                                   
+                                                   'HMEC_H3K20me1', 'HMEC_H3K9me3', 'HMEC_H3K27me3', 
+                                                     
+                                                   'HMEC_H2A.Z',
+                                                   'HMEC_SuperEnhancer', 'MCF7_SuperEnhancer')))
+          
+          temp2 = temp[temp$Mark == 'HMEC_SuperEnhancer' |
+                       temp$Mark == 'MCF7_SuperEnhancer', ]
+          
+          temp = temp[temp$Mark != 'HMEC_SuperEnhancer' &
+                      temp$Mark != 'MCF7_SuperEnhancer', ]
+          
+          
+          fp <- ggplot(data=temp, aes(x = factor(Mark), 
+                                                  y = Est, 
+                                                  ymin = Conf95low, 
+                                                  ymax = Conf95high)) +
+               geom_pointrange() +
+               geom_text(aes(label=format(round(Est, 2), nsmall = 2)), hjust=0, vjust=-0.5) +
+               geom_hline(aes(fill=factor(Mark)), yintercept =1, linetype=2)+
+               xlab('Genomic Context')+ ylab("Log-Odds Ratio (95% Confidence Interval)")+
+               geom_errorbar(aes(ymin=Conf95low, ymax=Conf95high), width=0.1, cex=1) + 
+               coord_flip() + theme_Publication() + ggtitle(latdim) +
+               scale_y_log10(breaks=c(0, 0.25, 0.5, 1, 2, 4),position="top") 
+          
+          # By dimension
+          file.name = paste0('results/OR_enhancer_by_dimension_100D_', latdim, '.png')
+          png(file.name, width = 2500, height = 3000, res = 300)
+          print(fp)
+          dev.off()
+          
+          
+          ############################
+          # by dimension more granular
+          ############################
+          # Island Context
+          gran = 'IslandContext'
+          islandContexts = c('N_Shelf', 'N_Shore', 'Island', 'S_Shore', 'S_Shelf', 'OpenSea')
+          temp = temp[temp$Mark %in% islandContexts, ]
+          
+          fp <- ggplot(data=temp, aes(x = factor(Mark), 
+                                      y = Est, 
+                                      ymin = Conf95low, 
+                                      ymax = Conf95high)) +
+               geom_pointrange() +
+               geom_text(aes(label=format(round(Est, 2), nsmall = 2)), hjust=0, vjust=-0.5) +
+               geom_hline(aes(fill=factor(Mark)), yintercept =1, linetype=2)+
+               xlab('CpG Island Context')+ ylab("Log-Odds Ratio (95% Confidence Interval)")+
+               geom_errorbar(aes(ymin=Conf95low, ymax=Conf95high), width=0.1, cex=1) + 
+               coord_flip() + theme_Publication() + ggtitle(latdim) +
+               scale_y_log10(breaks=c(0, 0.25, 0.5, 1, 2, 4),position="top") 
+          
+          file.name = paste0('results/OR_enhancer_by_dimension_100D_', latdim, '_', gran, '.png')
+          png(file.name, width = 2500, height = 3000, res = 300)
+          print(fp)
+          dev.off()
+     }
+     
+     
+     # Together
+     gran = 'IslandContext'
+     enhancer_results.out$Node = factor(enhancer_results.out$Node, levels = c("VAE24", "VAE35", "VAE43",
+                                                                              "VAE91", "VAE93",
+                                                                              "VAE22", "VAE63"))
+     enhancer_results.out2 = enhancer_results.out
+     enhancer_results.out = enhancer_results.out[enhancer_results.out$Est > 0, ]
+     
+     islandContexts = c('N_Shelf', 'N_Shore', 'Island', 'S_Shore', 'S_Shelf', 'OpenSea')
+     temp = enhancer_results.out[enhancer_results.out$Mark %in% islandContexts, ]
+     
+     fp1 <- ggplot(data=temp, aes(x = Mark, 
+                                                  y = Est, 
+                                                  ymin = Conf95low, 
+                                                  ymax = Conf95high)) +
+          geom_pointrange(aes(col=Node)) +
+          geom_hline(aes(fill=Mark), yintercept =1, linetype=2)+
+          geom_text(aes(label=format(round(Est, 2), nsmall = 2)), hjust=0, vjust=-0.5) +
+          xlab('CpG Island Context')+ ylab("Log-Odds Ratio (95% Confidence Interval)")+
+          geom_errorbar(aes(ymin=Conf95low, ymax=Conf95high, col=Node), width=0.1, cex=1) + 
+          facet_wrap(~Node, strip.position="left", nrow=7, scales = "free_y") +
+          coord_flip() + theme_Publication() + theme(legend.position="none", text = element_text(size = 20)) +
+          scale_y_log10(breaks=c(0, 0.25, 0.5, 1, 2, 4),position="top")
+     
+     file.name = paste0('results/OR_enhancer_by_dimension_100D_', gran, '.png')
+     png(file.name, width = 3000, height = 3000, res = 300)
+     print(fp1)
+     dev.off() 
+     
+     # Transcriptional Repression
+     enhancer_results.out$Mark = factor(enhancer_results.out$Mark, levels = rev(c('N_Shelf', 'N_Shore', 'Island', 'S_Shore', 'S_Shelf', 
+                                                                                  'OpenSea', 'Enhancer', 'DHS', 'Br_myo_H3K9me3',
+                                                                                  'Br_myo_H3K4me3', 'Br_myo_H3K36me3', 'Br_myo_H3K9ac',
+                                                                                  
+                                                                                  'Br_myo_H3K27me3', 'Br_myo_H3K4me1',
+                                                                                  'HMEC_H3K4me1', 'HMEC_H3K4me2', 'HMEC_H3K4me3',
+                                                                                  'HMEC_H3K9ac', 'HMEC_H3K27ac', 'HMEC_H3K36me3', 
+                                                                                  'HMEC_H3K79me2', 
+                                                                                  
+                                                                                  'HMEC_H3K20me1', 'HMEC_H3K9me3', 'HMEC_H3K27me3', 
+                                                                                  
+                                                                                  'HMEC_H2A.Z',
+                                                                                  'HMEC_SuperEnhancer', 'MCF7_SuperEnhancer')))
+     temp.colInActivity = c('HMEC_H3K20me1', 'HMEC_H3K9me3', 'HMEC_H3K27me3')
+     temp.colInActivity2 = c('Br_myo_H3K4me3', 'Br_myo_H3K36me3', 'Br_myo_H3K4me1')
+     context = c(temp.colInActivity, temp.colInActivity2)
+
+     gran = 'Repressive'
+     enhancer_results.out$Node = factor(enhancer_results.out$Node, levels = c("VAE24", "VAE35", "VAE43",
+                                                                              "VAE91", "VAE93",
+                                                                              "VAE22", "VAE63"))
+     temp = enhancer_results.out[enhancer_results.out$Mark %in% context, ]
+     
+     fp2 <- ggplot(data=temp, aes(x = Mark, 
+                                 y = Est, 
+                                 ymin = Conf95low, 
+                                 ymax = Conf95high)) +
+          geom_pointrange(aes(col=Node)) +
+          geom_hline(aes(fill=Mark), yintercept =1, linetype=2)+
+          geom_text(aes(label=format(round(Est, 2), nsmall = 2)), hjust=0, vjust=-0.5) +
+          xlab('Transcriptional Repressive Context')+ ylab("Log-Odds Ratio (95% Confidence Interval)")+
+          geom_errorbar(aes(ymin=Conf95low, ymax=Conf95high, col=Node), width=0.1, cex=1) + 
+          facet_wrap(~Node, strip.position="left", nrow=7, scales = "free_y") +
+          coord_flip() + theme_Publication() + theme(legend.position="none", text = element_text(size = 20)) +
+          scale_y_log10(breaks=c(0.25, 0.5, 1, 2, 4),position="top")
+     
+     file.name = paste0('results/OR_enhancer_by_dimension_100D_', gran, '.png')
+     png(file.name, width = 3000, height = 3000, res = 300)
+     print(fp2)
+     dev.off()
+
+     
+     # Transcriptional Activation
+     temp.colActivity = c('HMEC_H3K4me1', 'HMEC_H3K4me2', 'HMEC_H3K4me3',
+                          'HMEC_H3K9ac', 'HMEC_H3K27ac', 'HMEC_H3K36me3', 'HMEC_H3K79me2')
+     temp.colActivity2 = c('Br_myo_H3K9me3','Br_myo_H3K27me3', 'Br_myo_H3K9ac')
+     context = c(temp.colActivity, temp.colActivity2)
+     
+     gran = 'Activation'
+     enhancer_results.out$Node = factor(enhancer_results.out$Node, levels = c("VAE24", "VAE35", "VAE43",
+                                                                              "VAE91", "VAE93",
+                                                                              "VAE22", "VAE63"))
+     temp = enhancer_results.out[enhancer_results.out$Mark %in% context, ]
+     
+     fp3 <- ggplot(data=temp, aes(x = Mark, 
+                                 y = Est, 
+                                 ymin = Conf95low, 
+                                 ymax = Conf95high)) +
+          geom_pointrange(aes(col=Node)) +
+          geom_hline(aes(fill=Mark), yintercept =1, linetype=2)+
+          geom_text(aes(label=format(round(Est, 2), nsmall = 2)), hjust=0, vjust=-0.5) +
+          xlab('Transcriptional Activation Context')+ ylab("Log-Odds Ratio (95% Confidence Interval)")+
+          geom_errorbar(aes(ymin=Conf95low, ymax=Conf95high, col=Node), width=0.1, cex=1) + 
+          facet_wrap(~Node, strip.position="left", nrow=7, scales = "free_y") +
+          coord_flip() + theme_Publication() + theme(legend.position="none", text = element_text(size = 20)) +
+          scale_y_log10(breaks=c(0, 0.25, 0.5, 1, 2, 4),  position="top")
+     
+     file.name = paste0('results/OR_enhancer_by_dimension_100D_', gran, '.png')
+     png(file.name, width = 3000, height = 2500, res = 300)
+     print(fp3)
+     dev.off()
+     
+     
+     ######################
+     # Save combined file
+     library(gridExtra)
+     
+     lay <- rbind(c(1,3),
+                  c(2,3))
+     
+     g = grid.arrange(fp1, fp2, fp3, ncol = 2, layout_matrix = lay)
+     print(g)
+     
+     ggsave(g, file="results/OR_enhancer_by_dimension_100D_combined.png", width=18, height=24)
+     
+     
+#####################
 # Visualize enhancer results
 #####################
      library(tidyverse)
      library(ComplexHeatmap)
      library(ggdendro)
+     library(circlize)
+     enhancer_results.out$Mark = factor(enhancer_results.out$Mark, levels = rev(c('N_Shelf', 'N_Shore', 'Island', 'S_Shore', 'S_Shelf', 
+                                                  'OpenSea', 'Enhancer', 'DHS', 'Br_myo_H3K9me3',
+                                                  'Br_myo_H3K4me3', 'Br_myo_H3K36me3', 'Br_myo_H3K9ac',
+                                                  
+                                                  'Br_myo_H3K27me3', 'Br_myo_H3K4me1',
+                                                  'HMEC_H3K4me1', 'HMEC_H3K4me2', 'HMEC_H3K4me3',
+                                                  'HMEC_H3K9ac', 'HMEC_H3K27ac', 'HMEC_H3K36me3', 
+                                                  'HMEC_H3K79me2', 
+                                                  
+                                                  'HMEC_H3K20me1', 'HMEC_H3K9me3', 'HMEC_H3K27me3', 
+                                                  
+                                                  'HMEC_H2A.Z',
+                                                  'HMEC_SuperEnhancer', 'MCF7_SuperEnhancer')))
+     
+     
      enhancer_results.out$Est = as.numeric(enhancer_results.out$Est)
+     enhancer_results.out$Significant = factor(ifelse(enhancer_results.out$Pvalue < 0.05, 'Yes', 'No'))
+     enhancer_results.out$Direction = ifelse(enhancer_results.out$Significant == 'Yes' & 
+                                             enhancer_results.out$Est > 1, 
+                                             'Significantly Enriched', 
+                                        ifelse(enhancer_results.out$Significant == 'Yes' & 
+                                               enhancer_results.out$Est < 1, 
+                                               'Significantly Depleted', 'Not Significant'))
+     
      heat.data = enhancer_results.out[, c('Mark', 'Node', 'Est')]
     
+     temp.ERneg = c('VAE24', 'VAE35', 'VAE43')
+     temp.ERpos = c('VAE91', 'VAE93')
+     temp.ERboth = c('VAE22', 'VAE63')
+     vae.annos = c(temp.ERboth, temp.ERneg, temp.ERpos)
+     vae.annos = ifelse(vae.annos %in% temp.ERneg, 'ER-negative', 
+                        ifelse(vae.annos %in% temp.ERpos, 'ER-positive', 
+                               ifelse(vae.annos %in% temp.ERboth, 'ER-both', 'N/A')))
+     
+     ta_anno =  HeatmapAnnotation(df = data.frame(VAE = vae.annos),
+                                  col = list(VAE = c('ER-negative' = '#fd7b5f', 
+                                                     'ER-positive' = '#fddb77', 
+                                                     'ER-both' = '#c9c4fa')))
+     
      # Elaboration of heatmap (white - steelblue)
      # Run clustering
      heat.data2 = heat.data %>% spread(Mark, Est) 
@@ -468,15 +751,111 @@
      heat.data2 = apply(heat.data2, 2, as.numeric)
      rownames(heat.data2) = rowsnames
      
-     
+     # Heatmap with all marks
      file.name = paste0('results/OR_heatmap_100D.png')
-     png(file.name, width = 2000, height = 2000, res = 300)
-     Heatmap(t(heat.data2), col = colorRamp2(c(0, 1, 6), c("red", "white", "black")),
+     png(file.name, width = 3000, height = 3000, res = 300)
+     h1 = Heatmap(t(heat.data2), col = colorRamp2(c(0, 1, 6), c("#E69F00", "white", "black")),
              heatmap_legend_param = list(color_bar = 'continuous', title = 'OR'), 
-             cluster_rows = T)
+             cluster_rows = T, cluster_columns = T,
+             top_annotation = ta_anno); h1
      dev.off()
      
-
+     
+     # Heatmap with CpG island context
+     temp.cols = c('N_Shelf', 'N_Shore', 'Island', 'S_Shore', 'S_Shelf', 'OpenSea', 'Enhancer', 'DHS')
+     temp = heat.data2[, colnames(heat.data2) %in% temp.cols]
+     
+     file.name = paste0('results/OR_heatmap_CpGislandContext_100D.png')
+     png(file.name, width = 3000, height = 3000, res = 300)
+     h2 = Heatmap(t(temp), col = colorRamp2(c(0, 1, 6), c("#E69F00", "white", "black")),
+             heatmap_legend_param = list(color_bar = 'continuous', title = 'OR'), 
+             cluster_rows = F, cluster_columns = T,
+             top_annotation = ta_anno); h2
+     dev.off()
+     
+     
+     # Heatmap with enhancer marks
+     temp.cols = c('Enhancer', 'DHS', 'HMEC_SuperEnhancer', 'MCF7_SuperEnhancer')
+     temp = heat.data2[, colnames(heat.data2) %in% temp.cols]
+     
+     file.name = paste0('results/OR_heatmap_enhancers_100D.png')
+     png(file.name, width = 3000, height = 3000, res = 300)
+     h3 = Heatmap(t(temp), col = colorRamp2(c(0, 1, 6), c("#E69F00", "white", "black")),
+             heatmap_legend_param = list(color_bar = 'continuous', title = 'OR'), 
+             cluster_rows = T, cluster_columns = T,
+             top_annotation = ta_anno); h3
+     dev.off()
+     
+     
+     # Heatmap with HMEC marks
+     
+     temp.cols = c('HMEC_H3K4me1', 'HMEC_H3K4me2', 'HMEC_H3K4me3',
+                   'HMEC_H3K9ac', 'HMEC_H3K27ac', 'HMEC_H3K36me3', 'HMEC_H3K79me2', 
+                   'HMEC_H3K20me1', 'HMEC_H3K9me3', 'HMEC_H3K27me3')
+     temp.cols2 = c('Br_myo_H3K9me3', 'Br_myo_H3K4me3', 
+                   'Br_myo_H3K36me3', 'Br_myo_H3K9ac',
+                   'Br_myo_H3K27me3', 'Br_myo_H3K4me1')
+     
+     temp.cols = c(temp.cols, temp.cols2)
+     
+     temp.colActivity = c('HMEC_H3K4me1', 'HMEC_H3K4me2', 'HMEC_H3K4me3',
+                          'HMEC_H3K9ac', 'HMEC_H3K27ac', 'HMEC_H3K36me3', 'HMEC_H3K79me2')
+     temp.colActivity2 = c('Br_myo_H3K9me3','Br_myo_H3K27me3', 'Br_myo_H3K9ac')
+     temp.colActivity = c(temp.colActivity, temp.colActivity2)
+     
+     temp.colInActivity = c('HMEC_H3K20me1', 'HMEC_H3K9me3', 'HMEC_H3K27me3')
+     temp.colInActivity2 = c('Br_myo_H3K4me3', 'Br_myo_H3K36me3', 'Br_myo_H3K4me1')
+     temp.colInActivity = c(temp.colInActivity, temp.colInActivity2)
+     
+     
+     temp.out = heat.data[heat.data$Mark %in% temp.cols, ]
+     temp.out = data.frame('Mark' = temp.out$Mark)
+     temp = heat.data2[, colnames(heat.data2) %in% temp.cols]
+     
+     mark.annos = colnames(temp)
+     mark.annos = ifelse(mark.annos %in% temp.colActivity, 'Activation', 
+                         ifelse(mark.annos %in% temp.colInActivity, 'Repression', 'N/A'))
+     
+ 
+     file.name = paste0('results/OR_heatmap_HMEC_100D.png')
+     png(file.name, width = 3000, height = 3000, res = 300)
+          h4 = Heatmap(t(temp), col = colorRamp2(c(0, 1, 6), c("#E69F00", "white", "black")),
+                  heatmap_legend_param = list(color_bar = 'continuous', title = 'OR'), 
+                  cluster_rows = T, 
+                  cluster_columns = T,
+                  row_names_side = "left", 
+                  show_row_dend = T,
+                  top_annotation = ta_anno) + 
+                    Heatmap(mark.annos, col = list('Activation' = 'darkgrey', 'Repression' = 'grey'),
+                    name = 'Transcription'); h4
+     dev.off()
+     
+     
+     # Bubble chart
+     enhancer_results.out$VAE = factor(enhancer_results.out$Node, levels = c('VAE24', 'VAE35', 'VAE43',
+                                                                              'VAE91', 'VAE93',
+                                                                              'VAE22', 'VAE63'))
+          
+     file.name = paste0('results/OR_bubble_chart_100D.png')
+     png(file.name, width = 3000, height = 3000, res = 300)
+     
+     group.colors = c('Significantly Enriched' = 'yelow', 
+                      'Significantly Depleted' = 'blue', 
+                      'Not Significant' = 'green')
+     
+     ggplot(enhancer_results.out, aes(x = VAE, 
+                                      y = Mark,
+                                      col = Direction)) +
+          geom_point(aes(size=Significant)) + 
+          theme_Publication() + 
+          ylab('Genomic Context') +
+          xlab('VAE Latent Dimension') +
+          guides(size=F) +
+          scale_color_manual(values = c('grey', 
+                                        '#E69F00', 
+                                        '#56B4E9'))
+     
+     dev.off()
      
 #####################
 # Visualize genomic context
@@ -487,7 +866,7 @@
      ## Visualization
      #http://zuguang.de/circlize_book/book/high-level-genomic-functions.html#genomic-heatmap
 
-     cpg_set = rbind(correlations63, correlations37, correlations22)
+     cpg_set = rbind(correlations22, correlations63)
      cpg_set.unique = cpg_set[rownames(cpg_set) %in% unique(cpg_set$CpG), ]
      
      anno.sub = ann450k[which(rownames(ann450k) %in% cpg_set.unique$CpG), ]
@@ -514,19 +893,19 @@
      
      bed = bed[with(bed, order(bed$chr)), ]
      
-     bed_list = list('VAE63' = bed[bed$Node == 'VAE63', ],
-                     'VAE37' = bed[bed$Node == 'VAE37', ],
-                     'VAE22' = bed[bed$Node == 'VAE22', ])
+     bed_list = list('VAE22' = bed[bed$Node == 'VAE22', ],
+                     'VAE63' = bed[bed$Node == 'VAE63', ])#,
+                     #'VAE43' = bed[bed$Node == 'VAE43', ])
      
      circlize_plot = function() {
           circos.initializeWithIdeogram(species = "hg19", chromosome.index = paste0("chr", 1:22))
           circos.genomicRainfall(bed_list, pch = 16, cex = 0.4, col = c("lightsteelblue", 
-                                                                        "orangered1",
-                                                                        "#0000FF80"))
+                                                                        "orangered1"))#,
+                                                                        #"#0000FF80"))
           
-          circos.genomicDensity(bed[bed$Node == 'VAE63', ], col = c("lightsteelblue"), track.height = 0.1)
-          circos.genomicDensity(bed[bed$Node == 'VAE37', ], col = c("orangered1"), track.height = 0.1)
-          circos.genomicDensity(bed[bed$Node == 'VAE22', ], col = c("#0000FF80"), track.height = 0.1)
+          circos.genomicDensity(bed[bed$Node == 'VAE22', ], col = c("lightsteelblue"), track.height = 0.1)
+          circos.genomicDensity(bed[bed$Node == 'VAE63', ], col = c("orangered1"), track.height = 0.1)
+          #circos.genomicDensity(bed[bed$Node == 'VAE43', ], col = c("#0000FF80"), track.height = 0.1)
           circos.clear()
      }
      
@@ -588,26 +967,70 @@
      
      
 #####################
-# 
+#  Logistic regression
 #####################
+     library(InformationValue)
+     library(ROCR)
+     
+     # load the library
+     library(caret)
+     
+     # define training control
+     train_control <- trainControl(method="LOOCV")
+     
+     # train the model
+     model = train(factor(ER) ~ `24` + `35` + `43` + `47` + `91` + `93`, 
+                    data=training, method="glm", family="binomial",
+                    trControl=train_control, tuneLength = 5)
+     
+     pred = predict(model, newdata=test)
+     confusionMatrix(data=pred, factor(test$ER))
+     
+     # summarize results
+     print(model)
+     
+     
+     
      # http://r-statistics.co/Logistic-Regression-With-R.html
+     # Training
      fit = glm(ER ~ `24` + `35` + `43` + `47` + `91` + `93`, 
                data = training, family = binomial(link = "logit"))
      summary(fit)
+     
+     
+     
+     
+     # Testing
      predicted = predict(fit, test, type="response")
      
-     library(InformationValue)
      optCutOff <- optimalCutoff(test$ER, predicted)[1] 
      
-     misClassError(test$ER, predicted, threshold = optCutOff)
+     1 - misClassError(test$ER, predicted, threshold = optCutOff)
      roc = plotROC(test$ER, predicted, returnSensitivityMat = T)
      
      write.csv(roc, 'results/ER_status_classification_ROC.csv')
      
-     Concordance(test$ER, predicted)
+     colnames(roc) = c('FP', 'TP', 'Threshold')
      
-     sensitivity(test$ER, predicted, threshold = optCutOff)
-     specificity(test$ER, predicted, threshold = optCutOff)
+     predicts = prediction(predicted, test$ER)
+     perfs = performance(predicts, measure = 'auc')
+     Concordance(test$ER, predicted)
+     sense = sensitivity(test$ER, predicted, threshold = optCutOff)
+     spec = specificity(test$ER, predicted, threshold = optCutOff)
      confusionMatrix(test$ER, predicted, threshold = optCutOff)
      
+     ## Corr > 0.6
+     png('results/ER_classifier_performance_100D.png', width = 2000, height = 2000, res = 300)
+     
+     ggplot(roc, aes(FP, TP)) +
+          geom_line(size = 2, alpha = 0.7)+
+          labs(x = "False Positive Rate (1-Specificity)", 
+               y = "True Positive Rate (Sensitivity)") +
+          annotate("text", x = 0.5, y = 0.5, label = paste0("AUC = ", round(as.numeric(perfs@y.values), digits = 2), '\n')) +
+          theme_Publication()
+     
+     dev.off()
+     
+
+
      

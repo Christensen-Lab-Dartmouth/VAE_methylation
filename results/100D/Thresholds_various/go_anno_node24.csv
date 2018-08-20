@@ -1,0 +1,51 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0098559","cytoplasmic side of early endosome membrane","CC",2,1,0.000808562136380155,1
+"GO:0010009","cytoplasmic side of endosome membrane","CC",2,1,0.000808562136380155,1
+"GO:0042641","actomyosin","CC",56,3,0.00211601424051679,1
+"GO:0034399","nuclear periphery","CC",70,3,0.00231839178246385,1
+"GO:0005930","axoneme","CC",74,3,0.00335874812262651,1
+"GO:0097014","ciliary plasm","CC",74,3,0.00335874812262651,1
+"GO:0017111","nucleoside-triphosphatase activity","MF",498,6,0.0034943081839077,1
+"GO:0008088","axo-dendritic transport","BP",25,2,0.00449491603014603,1
+"GO:0031773","kisspeptin receptor binding","MF",1,1,0.00460308828902374,1
+"GO:0030516","regulation of axon extension","BP",68,3,0.00463782755208469,1
+"GO:0009087","methionine catabolic process","BP",1,1,0.00467647668810021,1
+"GO:0098601","selenomethionine adenosyltransferase activity","MF",1,1,0.00467647668810021,1
+"GO:0016462","pyrophosphatase activity","MF",523,6,0.00467852663389908,1
+"GO:0016818","hydrolase activity, acting on acid anhydrides, in phosphorus-containing anhydrides","MF",524,6,0.00468986834792374,1
+"GO:0016817","hydrolase activity, acting on acid anhydrides","MF",525,6,0.00474056205936758,1
+"GO:0005675","holo TFIIH complex","CC",6,1,0.00489495503542057,1
+"GO:0004478","methionine adenosyltransferase activity","MF",2,1,0.00504023987802864,1
+"GO:0042643","actomyosin, actin portion","CC",1,1,0.00557940946611238,1
+"GO:0099513","polymeric cytoskeletal fiber","CC",478,6,0.00602021988332998,1
+"GO:0099080","supramolecular complex","CC",478,6,0.00602021988332998,1
+"GO:0099512","supramolecular fiber","CC",478,6,0.00602021988332998,1
+"GO:0099081","supramolecular polymer","CC",478,6,0.00602021988332998,1
+"GO:0061387","regulation of extent of cell growth","BP",79,3,0.00744324117046455,1
+"GO:0044441","ciliary part","CC",228,4,0.00775701863089298,1
+"GO:0006367","transcription initiation from RNA polymerase II promoter","BP",113,3,0.00776153265987823,1
+"GO:0097512","cardiac myofibril","CC",2,1,0.00786530547819343,1
+"GO:0044430","cytoskeletal part","CC",1067,9,0.00800076089058706,1
+"GO:0021757","caudate nucleus development","BP",1,1,0.00824518577221327,1
+"GO:0021758","putamen development","BP",1,1,0.00824518577221327,1
+"GO:0042272","nuclear RNA export factor complex","CC",1,1,0.00831880489451571,1
+"GO:0070702","inner mucus layer","CC",1,1,0.00861336524442614,1
+"GO:0070701","mucus layer","CC",1,1,0.00861336524442614,1
+"GO:0070703","outer mucus layer","CC",1,1,0.00861336524442614,1
+"GO:0038043","interleukin-5-mediated signaling pathway","BP",2,1,0.00866474536803505,1
+"GO:0004914","interleukin-5 receptor activity","MF",2,1,0.00866474536803505,1
+"GO:0072365","regulation of cellular ketone metabolic process by negative regulation of transcription from RNA polymerase II promoter","BP",1,1,0.00910661672006456,1
+"GO:0048675","axon extension","BP",87,3,0.00933443358532763,1
+"GO:0034046","poly(G) binding","MF",3,1,0.00934636610206085,1
+"GO:0072364","regulation of cellular ketone metabolic process by regulation of transcription from RNA polymerase II promoter","BP",2,1,0.00950159090500348,1
+"GO:0008353","RNA polymerase II carboxy-terminal domain kinase activity","MF",9,1,0.0102022617111175,1
+"GO:0006556","S-adenosylmethionine biosynthetic process","BP",3,1,0.0103638110676869,1
+"GO:0016234","inclusion body","CC",46,2,0.0110244611316409,1
+"GO:0045298","tubulin complex","CC",3,1,0.0121930454811646,1
+"GO:0006370","7-methylguanosine mRNA capping","BP",15,1,0.0129627517743896,1
+"GO:0009452","7-methylguanosine RNA capping","BP",15,1,0.0129627517743896,1
+"GO:0036260","RNA capping","BP",15,1,0.0129627517743896,1
+"GO:0031105","septin complex","CC",3,1,0.0130372979815079,1
+"GO:0032156","septin cytoskeleton","CC",3,1,0.0130372979815079,1
+"GO:0006352","DNA-templated transcription, initiation","BP",145,3,0.0132112148333442,1
+"GO:0034687","integrin alphaL-beta2 complex","CC",2,1,0.0135350750213993,1

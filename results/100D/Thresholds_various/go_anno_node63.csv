@@ -1,0 +1,51 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0015467","G-protein activated inward rectifier potassium channel activity","MF",10,2,0.000591704887233746,1
+"GO:0010921","regulation of phosphatase activity","BP",88,3,0.000937952809530595,1
+"GO:0000381","regulation of alternative mRNA splicing, via spliceosome","BP",23,2,0.00118353032135384,1
+"GO:0005242","inward rectifier potassium channel activity","MF",19,2,0.00157599468897815,1
+"GO:0000380","alternative mRNA splicing, via spliceosome","BP",30,2,0.00163158234589951,1
+"GO:0035303","regulation of dephosphorylation","BP",108,3,0.00169684627572447,1
+"GO:0010107","potassium ion import","BP",25,2,0.0017541072535563,1
+"GO:0004864","protein phosphatase inhibitor activity","MF",26,2,0.00217129037381991,1
+"GO:0048024","regulation of mRNA splicing, via spliceosome","BP",34,2,0.00225482660629327,1
+"GO:0036126","sperm flagellum","CC",41,2,0.00229666930078391,1
+"GO:0019212","phosphatase inhibitor activity","MF",28,2,0.00235199220886958,1
+"GO:0050911","detection of chemical stimulus involved in sensory perception of smell","BP",252,3,0.00361198041469935,1
+"GO:0004984","olfactory receptor activity","MF",252,3,0.00361198041469935,1
+"GO:0060089","molecular transducer activity","MF",1241,8,0.00413078089650793,1
+"GO:0004872","receptor activity","MF",1241,8,0.00413078089650793,1
+"GO:0050684","regulation of mRNA processing","BP",54,2,0.00459251291955693,1
+"GO:0099600","transmembrane receptor activity","MF",997,7,0.00481982300789167,1
+"GO:0050907","detection of chemical stimulus involved in sensory perception","BP",280,3,0.00508368826998957,1
+"GO:0007608","sensory perception of smell","BP",270,3,0.00568003782432094,1
+"GO:0043484","regulation of RNA splicing","BP",59,2,0.00578666373875386,1
+"GO:0022834","ligand-gated channel activity","MF",124,3,0.00616940583953094,1
+"GO:0015276","ligand-gated ion channel activity","MF",124,3,0.00616940583953094,1
+"GO:0006397","mRNA processing","BP",258,3,0.00652549837408012,1
+"GO:0019888","protein phosphatase regulator activity","MF",50,2,0.00687805200415448,1
+"GO:0022843","voltage-gated cation channel activity","MF",113,3,0.00695477791377201,1
+"GO:0097340","inhibition of cysteine-type endopeptidase activity","BP",6,1,0.00700692318923547,1
+"GO:1990001","inhibition of cysteine-type endopeptidase activity involved in apoptotic process","BP",6,1,0.00700692318923547,1
+"GO:0097341","zymogen inhibition","BP",6,1,0.00700692318923547,1
+"GO:1903311","regulation of mRNA metabolic process","BP",74,2,0.00788819760546935,1
+"GO:0009593","detection of chemical stimulus","BP",308,3,0.0085351087108075,1
+"GO:0000164","protein phosphatase type 1 complex","CC",8,1,0.00938910170301493,1
+"GO:0019208","phosphatase regulator activity","MF",59,2,0.00944003024091616,1
+"GO:0031514","motile cilium","CC",85,2,0.00947419704947933,1
+"GO:0007606","sensory perception of chemical stimulus","BP",322,3,0.0107701694672251,1
+"GO:0014802","terminal cisterna","CC",4,1,0.0114375871010874,1
+"GO:0036157","outer dynein arm","CC",5,1,0.012120048531864,1
+"GO:0050906","detection of stimulus involved in sensory perception","BP",321,3,0.0124049877139318,1
+"GO:1902894","negative regulation of pri-miRNA transcription from RNA polymerase II promoter","BP",9,1,0.013832592815909,1
+"GO:0022832","voltage-gated channel activity","MF",155,3,0.0138609918994429,1
+"GO:0005244","voltage-gated ion channel activity","MF",155,3,0.0138609918994429,1
+"GO:0097223","sperm part","CC",109,2,0.0148688258739968,1
+"GO:0016071","mRNA metabolic process","BP",357,3,0.0155822819198554,1
+"GO:0008016","regulation of heart contraction","BP",185,3,0.0165172671772148,1
+"GO:0048763","calcium-induced calcium release activity","MF",3,1,0.018297971367634,1
+"GO:0004857","enzyme inhibitor activity","MF",280,3,0.0183513409207426,1
+"GO:0003729","mRNA binding","MF",108,2,0.0187322463419036,1
+"GO:0090336","positive regulation of brown fat cell differentiation","BP",5,1,0.0188015780427883,1
+"GO:0097225","sperm midpiece","CC",9,1,0.0198751484913735,1
+"GO:0005219","ryanodine-sensitive calcium-release channel activity","MF",4,1,0.0202796918747884,1
+"GO:0000398","mRNA splicing, via spliceosome","BP",156,2,0.0208254167824327,1

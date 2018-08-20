@@ -1,0 +1,51 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0048193","Golgi vesicle transport","BP",191,9,0.000389937780256494,1
+"GO:0031981","nuclear lumen","CC",2200,42,0.000990990850095857,1
+"GO:0005654","nucleoplasm","CC",1856,37,0.000999346239330247,1
+"GO:0006896","Golgi to vacuole transport","BP",21,3,0.00100098259410829,1
+"GO:0070161","anchoring junction","CC",531,17,0.00112764761178166,1
+"GO:0044422","organelle part","CC",5463,88,0.00125958980165524,1
+"GO:0043153","entrainment of circadian clock by photoperiod","BP",16,3,0.00129309176194316,1
+"GO:0044424","intracellular part","CC",9137,137,0.00138072380027145,1
+"GO:0044428","nuclear part","CC",2441,45,0.00149891799501031,1
+"GO:0005622","intracellular","CC",9396,140,0.00183307045072092,1
+"GO:0044446","intracellular organelle part","CC",5332,85,0.00210158764524815,1
+"GO:0009648","photoperiodism","BP",20,3,0.00224433480187881,1
+"GO:0005912","adherens junction","CC",519,16,0.00236452602346446,1
+"GO:0031624","ubiquitin conjugating enzyme binding","MF",22,3,0.00241305637704673,1
+"GO:0070013","intracellular organelle lumen","CC",2770,49,0.00242789852091013,1
+"GO:0031974","membrane-enclosed lumen","CC",2770,49,0.00242789852091013,1
+"GO:0043233","organelle lumen","CC",2770,49,0.00242789852091013,1
+"GO:0005737","cytoplasm","CC",7233,113,0.00259980278330883,1
+"GO:0072331","signal transduction by p53 class mediator","BP",161,7,0.00261547592176419,1
+"GO:0016482","cytosolic transport","BP",91,5,0.00289148930131276,1
+"GO:0009649","entrainment of circadian clock","BP",22,3,0.00323625029867986,1
+"GO:0044390","ubiquitin-like protein conjugating enzyme binding","MF",26,3,0.00323755835550728,1
+"GO:0005911","cell-cell junction","CC",485,15,0.00341326400863827,1
+"GO:0000077","DNA damage checkpoint","BP",96,5,0.00355257469060263,1
+"GO:0030054","cell junction","CC",1053,27,0.00399801366927402,1
+"GO:0072332","intrinsic apoptotic signaling pathway by p53 class mediator","BP",52,4,0.0041452123937829,1
+"GO:0007034","vacuolar transport","BP",179,7,0.00473690603117902,1
+"GO:0031570","DNA integrity checkpoint","BP",103,5,0.00479300505619009,1
+"GO:0002934","desmosome organization","BP",8,2,0.00486762802877893,1
+"GO:0005913","cell-cell adherens junction","CC",247,9,0.00499748714953635,1
+"GO:0030853","negative regulation of granulocyte differentiation","BP",8,2,0.00539952225370484,1
+"GO:0070184","mitochondrial tyrosyl-tRNA aminoacylation","BP",1,1,0.00547375069436443,1
+"GO:0004831","tyrosine-tRNA ligase activity","MF",1,1,0.00547375069436443,1
+"GO:0072545","tyrosine binding","MF",1,1,0.00547375069436443,1
+"GO:0006437","tyrosyl-tRNA aminoacylation","BP",1,1,0.00547375069436443,1
+"GO:0030851","granulocyte differentiation","BP",24,3,0.00562041133531753,1
+"GO:0043277","apoptotic cell clearance","BP",25,3,0.00575612404320201,1
+"GO:0030695","GTPase regulator activity","MF",222,9,0.00580360989488227,1
+"GO:0097237","cellular response to toxic substance","BP",7,2,0.00622139621984529,1
+"GO:0043517","positive regulation of DNA damage response, signal transduction by p53 class mediator","BP",9,2,0.00670856612210742,1
+"GO:0034499","late endosome to Golgi transport","BP",1,1,0.0070911907633355,1
+"GO:0060589","nucleoside-triphosphatase regulator activity","MF",233,9,0.00773066365397566,1
+"GO:0006895","Golgi to endosome transport","BP",14,2,0.00795751134379723,1
+"GO:0000469","cleavage involved in rRNA processing","BP",14,2,0.00806989962833318,1
+"GO:0006892","post-Golgi vesicle-mediated transport","BP",39,3,0.00819567644004428,1
+"GO:0030330","DNA damage response, signal transduction by p53 class mediator","BP",70,4,0.00832225912961919,1
+"GO:0006977","DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest","BP",40,3,0.00871685353974412,1
+"GO:1902254","negative regulation of intrinsic apoptotic signaling pathway by p53 class mediator","BP",12,2,0.00902691072477888,1
+"GO:1902400","intracellular signal transduction involved in G1 DNA damage checkpoint","BP",41,3,0.00905163676438662,1
+"GO:0072431","signal transduction involved in mitotic G1 DNA damage checkpoint","BP",41,3,0.00905163676438662,1

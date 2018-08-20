@@ -11,7 +11,7 @@
 #####################
      require(data.table)
      require(limma)
-
+     require(scales)
 ######################
 ## Set WD
 # Change this to your base WD, and all other code is relative to the folder structure
@@ -68,7 +68,7 @@
      
 ######################
 ## Read in the CpG data
-     base = 'results/100D/'
+     base = 'results/100D/Thresholds_various/'
      node22 = read.csv(paste(base, 'anno450K_node22.csv', sep = ''))
      node22$node = 22
      table(node22$Relation_to_Island)
@@ -83,11 +83,6 @@
      node35$node = 35
      table(node35$Relation_to_Island)
      table(node35$Relation_to_Island, node35$Enhancer)
-     
-     node37 = read.csv(paste(base, 'anno450K_node37.csv', sep = ''))
-     node37$node = 37
-     table(node37$Relation_to_Island)
-     table(node37$Relation_to_Island, node37$Enhancer)
      
      node43 = read.csv(paste(base, 'anno450K_node43.csv', sep = ''))
      node43$node = 43
@@ -109,7 +104,7 @@
      table(node93$Relation_to_Island)
      table(node93$Relation_to_Island, node93$Enhancer)
      
-     full.data = rbind(node22, node24, node35, node37, node43, node63, node91, node93)
+     full.data = rbind(node22, node24, node35, node43, node63, node91, node93)
 
 
 ## Plot CpGs by island context
@@ -118,51 +113,56 @@
      
      n22 = ggplot(node22, aes(x = Relation_to_Island)) + geom_bar(aes(y=..count../sum(..count..))) +
           scale_y_continuous(labels=percent_format()) + ggtitle("VAE Dimension 22") +
-          xlab("Context") + ylab("Proportion of associated CpGs per CpG island context") + theme_Publication() +
+          xlab("Context") + ylab("Proportion of associated CpGs per island context") + theme_Publication() +
           theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
      
      n24 = ggplot(node24, aes(x = Relation_to_Island)) + geom_bar(aes(y=..count../sum(..count..))) +
           scale_y_continuous(labels=percent_format()) + ggtitle("VAE Dimension 24") +
-          xlab("Context") + ylab("Proportion of associated CpGs per CpG island context") + theme_Publication() +
+          xlab("Context") + ylab("Proportion of associated CpGs per island context") + theme_Publication() +
           theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
      
      n35 = ggplot(node35, aes(x = Relation_to_Island)) + geom_bar(aes(y=..count../sum(..count..))) +
           scale_y_continuous(labels=percent_format()) + ggtitle("VAE Dimension 35") +
-          xlab("Context") + ylab("Proportion of associated CpGs per CpG island context") + theme_Publication() +
+          xlab("Context") + ylab("Proportion of associated CpGs per island context") + theme_Publication() +
           theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
      
      n37 = ggplot(node37, aes(x = Relation_to_Island)) + geom_bar(aes(y=..count../sum(..count..))) +
           scale_y_continuous(labels=percent_format()) + ggtitle("VAE Dimension 37") +
-          xlab("Context") + ylab("Proportion of associated CpGs per CpG island context") + theme_Publication() +
+          xlab("Context") + ylab("Proportion of associated CpGs per island context") + theme_Publication() +
           theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
      
      n43 = ggplot(node43, aes(x = Relation_to_Island)) + geom_bar(aes(y=..count../sum(..count..))) +
           scale_y_continuous(labels=percent_format()) + ggtitle("VAE Dimension 43") +
-          xlab("Context") + ylab("Proportion of associated CpGs per CpG island context") + theme_Publication() +
+          xlab("Context") + ylab("Proportion of associated CpGs per island context") + theme_Publication() +
           theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
      
      n63 = ggplot(node63, aes(x = Relation_to_Island)) + geom_bar(aes(y=..count../sum(..count..))) +
           scale_y_continuous(labels=percent_format()) + ggtitle("VAE Dimension 63") +
-          xlab("Context") + ylab("Proportion of associated CpGs per CpG island context") + theme_Publication() +
+          xlab("Context") + ylab("Proportion of associated CpGs per island context") + theme_Publication() +
           theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
      
      n91 = ggplot(node91, aes(x = Relation_to_Island)) + geom_bar(aes(y=..count../sum(..count..))) +
           scale_y_continuous(labels=percent_format()) + ggtitle("VAE Dimension 91") +
-          xlab("Context") + ylab("Proportion of associated CpGs per CpG island context") + theme_Publication() +
+          xlab("Context") + ylab("Proportion of associated CpGs per island context") + theme_Publication() +
           theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
      
      n93 = ggplot(node93, aes(x = Relation_to_Island)) + geom_bar(aes(y=..count../sum(..count..))) +
           scale_y_continuous(labels=percent_format()) + ggtitle("VAE Dimension 93") +
-          xlab("Context") + ylab("Proportion of associated CpGs per CpG island context") + theme_Publication() +
+          xlab("Context") + ylab("Proportion of associated CpGs per island context") + theme_Publication() +
           theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
 
+     nFull = ggplot(full.data, aes(x = Relation_to_Island)) + geom_bar(aes(y=..count../sum(..count..))) +
+          scale_y_continuous(labels=percent_format()) + ggtitle("All VAE Dimensions") +
+          xlab("Context") + ylab("Proportion of associated CpGs per island context") + theme_Publication() +
+          theme(axis.text.x = element_text(angle = 90, hjust = 1))
+     
      lay <- rbind(c(1,2,3),
-                  c(4,5,NA),
+                  c(4,5,8),
                   c(6,7,8))
      
      g = grid.arrange(n24, n35, n43,
                       n91, n93,  
-                      n22, n37, n63,  ncol = 3,
+                      n22, n63, nFull, ncol = 3,
                       layout_matrix = lay)
      
      ggsave(g, file="results/nodeCpG_correllation_relationToisland.png", width=16, height=16)
@@ -226,13 +226,121 @@
           xlab("Chromosome") + ylab("Proportion of associated CpGs per chromosome") + theme_Publication() +
           theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
      
+     namesFull = as.numeric(substr(full.data$chr, 4, 100))
+     nFull = ggplot(full.data, aes(x = reorder(chr, namesFull))) + geom_bar(aes(y=..count../sum(..count..))) +
+          scale_y_continuous(labels=percent_format()) + ggtitle("All VAE dimensions") +
+          xlab("Chromosome") + ylab("Proportion of associated CpGs per chromosome") + theme_Publication() +
+          theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+     
+     
      lay <- rbind(c(1,2,3),
-                  c(4,5,NA),
+                  c(4,5,8),
                   c(6,7,8))
-
+     
      g = grid.arrange(n24, n35, n43,
                       n91, n93,  
-                      n22, n37, n63,  ncol = 3,
+                      n22, n63, nFull, ncol = 3,
                       layout_matrix = lay)
      
      ggsave(g, file="results/nodeCpG_correllation_chr.png", width=16, height=16)
+
+     
+#####################
+# Proportion of sites annotated to gene
+##################### 
+     full.data$node = as.character(full.data$node)
+     full.data$GeneAnnot = ifelse(full.data$UCSC_RefGene_Name == '', 'Not Annotated to Gene', 'Annotated to Gene')
+     table(full.data$GeneAnnot, full.data$node)
+     
+     # need to complete!
+     nFull = ggplot(full.data, aes(x = node, fill = GeneAnnot)) + 
+          geom_bar(aes(y=..count../sum(..count..))) +
+          scale_y_continuous(labels=percent_format()) + 
+          ggtitle("All VAE dimensions") +
+          xlab("VAE Dimension") + 
+          ylab("Proportion of associated CpGs") + 
+          theme_Publication() +
+          theme(axis.text.x = element_text(angle = 0, hjust = 0.5)); nFull
+     
+     file.name = paste0("results/nodeCpG_gene_annotation.png")
+     png(file.name, width = 3000, height = 3000, res = 300)
+     nFull
+     dev.off()
+
+     
+#####################
+# Correlation plots between methylation and activations
+#####################  
+
+     plot.cor = function(cors.use, node, annotLedgend){
+          temp.cpg = as.character(cors.use[abs(cors.use$correlations) == max(abs(cors.use$correlations)), ]$CpG)
+          
+          vae = vae[order(rownames(vae)), ]
+          betas = betas[order(rownames(betas)), ]
+          covs.updated = covs.updated[order(covs.updated$Basename), ]
+          all(rownames(betas) == rownames(vae))
+          all(rownames(betas) == covs.updated$Basename)
+          
+          node.name = paste0('VAE', node)
+          temp = data.frame(cbind(node.name = vae[[node]], 
+                                  'Betas' = betas[[temp.cpg]],
+                                  'ER' = covs.updated$ER))
+          temp$node.name = as.numeric(as.character(temp$node.name))
+          temp$Betas = as.numeric(as.character(temp$Betas))
+          temp$ER = ifelse(temp$ER == '', 'Unknown', 
+                           ifelse(temp$ER == 'Positive', 'Positive', 'Negative'))
+          
+          
+          
+          g = ggplot(temp, aes(x=node.name, y=Betas)) +
+               geom_point(size=2, aes(col = ER)) + 
+               geom_smooth(method='lm') +
+               ylim(0, 1) + 
+               ggtitle(paste0("VAE dimension ", node)) +
+               xlab(paste0('VAE', node, ' Activation')) + 
+               ylab(paste0(temp.cpg, ' Beta Value')) + 
+               theme(legend.position=annotLedgend) +
+               annotate("text", x = 2, y = 0.0, label = paste0("Cor = ", format(round((cor(temp$node.name, temp$Betas)), 2), nsmall = 2))) +
+               theme_Publication()
+          return(g)
+     }
+     
+     n24 = plot.cor(correlations24, 24, annotLedgend = 'none') 
+     n35 = plot.cor(correlations35, 35, annotLedgend = 'none') 
+     n43 = plot.cor(correlations43, 43, annotLedgend = 'none') 
+     n91 = plot.cor(correlations91, 91, annotLedgend = 'none') 
+     n93 = plot.cor(correlations93, 93, annotLedgend = 'none') 
+     n22 = plot.cor(correlations22, 22, annotLedgend = 'bottom') 
+     n63 = plot.cor(correlations63, 63, annotLedgend = 'none') 
+     
+     lay <- rbind(c(1,2,3),
+                  c(4,5,8),
+                  c(6,7,8))
+     
+     # nFull from right above
+     g = grid.arrange(n24, n35, n43,
+                      n91, n93,  
+                      n22, n63, nFull, nrow = 3,
+                      layout_matrix = lay)
+     
+     ggsave(g, file="results/nodeCpG_correllations.png", width=16, height=16)
+     
+     
+#####################
+# Analyzing high correlation CpGs
+#####################  
+     er.neg = rbind(correlations24, correlations35, correlations43)
+     er.neg = er.neg[order(er.neg$correlations, decreasing = T), ]
+     temp = er.neg[abs(er.neg$correlations) > 0.7, ]
+     View(ann450k[ann450k$Name %in% temp$CpG, ])
+     
+     er.pos = rbind(correlations91, correlations93)
+     er.pos = er.pos[order(er.pos$correlations, decreasing = T), ]
+     temp = er.pos[abs(er.pos$correlations) > 0.65, ]
+     View(ann450k[ann450k$Name %in% temp$CpG, ])
+     
+     er.all = rbind(correlations22, correlations63)
+     er.all = er.all[order(er.all$correlations, decreasing = T), ]
+     temp = er.all[abs(er.all$correlations) > 0.7, ]
+     View(ann450k[ann450k$Name %in% temp$CpG, ])
+     
