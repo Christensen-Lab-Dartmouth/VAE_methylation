@@ -1,0 +1,51 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0050911","detection of chemical stimulus involved in sensory perception of smell","BP",252,42,9.17076011128592e-29,9.04466215975573e-25
+"GO:0004984","olfactory receptor activity","MF",252,42,9.17076011128592e-29,9.04466215975573e-25
+"GO:0007608","sensory perception of smell","BP",270,44,4.23528612776442e-28,2.78470062900511e-24
+"GO:0050907","detection of chemical stimulus involved in sensory perception","BP",280,42,1.64046414046019e-26,8.08953879264431e-23
+"GO:0009593","detection of chemical stimulus","BP",308,44,2.82261016184587e-25,1.1135197088482e-21
+"GO:0050906","detection of stimulus involved in sensory perception","BP",321,45,6.29677575327621e-24,1.93251729994717e-20
+"GO:0007606","sensory perception of chemical stimulus","BP",322,44,6.85810955621302e-24,1.93251729994717e-20
+"GO:0051606","detection of stimulus","BP",438,53,7.76822344166235e-23,1.91535259233487e-19
+"GO:0004930","G-protein coupled receptor activity","MF",605,63,4.20716378116779e-20,9.22070062039274e-17
+"GO:0099600","transmembrane receptor activity","MF",997,85,5.1142439615689e-18,1.00878462141947e-14
+"GO:0060089","molecular transducer activity","MF",1241,96,1.9233239158594e-17,3.16146368669389e-14
+"GO:0004872","receptor activity","MF",1241,96,1.9233239158594e-17,3.16146368669389e-14
+"GO:0004888","transmembrane signaling receptor activity","MF",950,80,5.47355529806693e-17,8.30506755802847e-14
+"GO:0007600","sensory perception","BP",665,63,1.07127558407137e-16,1.50935077827199e-13
+"GO:0038023","signaling receptor activity","MF",1041,82,1.83705153989462e-15,2.41572277496142e-12
+"GO:0007186","G-protein coupled receptor signaling pathway","BP",913,73,2.941266779983e-15,3.62603045219779e-12
+"GO:0050877","neurological system process","BP",919,78,4.37399850371382e-15,5.07512473445618e-12
+"GO:0003008","system process","BP",1492,101,1.57579621539459e-12,1.7268100193699e-09
+"GO:0004871","signal transducer activity","MF",1306,88,1.68008261719571e-12,1.74419103285187e-09
+"GO:0016021","integral component of membrane","CC",3868,183,3.06114766390329e-11,3.01905688352462e-08
+"GO:0031224","intrinsic component of membrane","CC",3969,184,2.8987329771774e-10,2.72273847499163e-07
+"GO:0071944","cell periphery","CC",3947,181,2.59500533881121e-08,2.32665819582051e-05
+"GO:0005886","plasma membrane","CC",3860,177,5.44218992932212e-08,4.66726940677734e-05
+"GO:0044425","membrane part","CC",4749,199,7.89151258394705e-08,6.48583690493148e-05
+"GO:0030883","endogenous lipid antigen binding","MF",5,4,5.11627648440497e-06,0.0037377242094403
+"GO:0030884","exogenous lipid antigen binding","MF",5,4,5.11627648440497e-06,0.0037377242094403
+"GO:0030882","lipid antigen binding","MF",5,4,5.11627648440497e-06,0.0037377242094403
+"GO:0048003","antigen processing and presentation of lipid antigen via MHC class Ib","BP",6,4,1.21977469275593e-05,0.00829657097055543
+"GO:0048007","antigen processing and presentation, exogenous lipid antigen via MHC class Ib","BP",6,4,1.21977469275593e-05,0.00829657097055543
+"GO:0071723","lipopeptide binding","MF",7,4,2.31363616529157e-05,0.0152121577867921
+"GO:0050896","response to stimulus","BP",5900,221,4.14388959598712e-05,0.0263671684776922
+"GO:0046873","metal ion transmembrane transporter activity","MF",356,30,7.29561471848945e-05,0.0449706251006889
+"GO:0022836","gated channel activity","MF",276,27,7.54402278591336e-05,0.0450926816521639
+"GO:0008324","cation transmembrane transporter activity","MF",487,35,0.000110273215943598,0.0639746818966904
+"GO:0030881","beta-2-microglobulin binding","MF",9,4,0.000146721559377553,0.0826880788206352
+"GO:0022890","inorganic cation transmembrane transporter activity","MF",410,31,0.00016183967584015,0.088674655720749
+"GO:0016020","membrane","CC",6399,230,0.00024393648905883,0.130044520180687
+"GO:0016713","oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced iron-sulfur protein as one donor, and incorporation of one atom of oxygen","MF",5,3,0.000281444270271064,0.146091795555177
+"GO:0022843","voltage-gated cation channel activity","MF",113,15,0.000301177704357082,0.146590390650611
+"GO:0002767","immune response-inhibiting cell surface receptor signaling pathway","BP",5,3,0.00030469992479975,0.146590390650611
+"GO:0002765","immune response-inhibiting signal transduction","BP",5,3,0.00030469992479975,0.146590390650611
+"GO:0042221","response to chemical","BP",2971,121,0.000503972125636341,0.235538370987505
+"GO:0032396","inhibitory MHC class I receptor activity","MF",2,2,0.000522500895099394,0.235538370987505
+"GO:0015075","ion transmembrane transporter activity","MF",647,40,0.000525408786993675,0.235538370987505
+"GO:0005549","odorant binding","MF",57,6,0.000551589840720237,0.241780213515704
+"GO:0005887","integral component of plasma membrane","CC",1296,69,0.000578204249836592,0.247936496261452
+"GO:0042742","defense response to bacterium","BP",170,13,0.000630810890417172,0.248279001918342
+"GO:0047783","corticosterone 18-monooxygenase activity","MF",2,2,0.000638893514318403,0.248279001918342
+"GO:0004507","steroid 11-beta-monooxygenase activity","MF",2,2,0.000638893514318403,0.248279001918342
+"GO:0005261","cation channel activity","MF",260,23,0.000641789233248032,0.248279001918342

@@ -1,0 +1,51 @@
+"","Term","Ont","N","DE","P.DE","FDR"
+"GO:0044422","organelle part","CC",5463,36,3.99532731766272e-05,0.573171169429236
+"GO:0044446","intracellular organelle part","CC",5332,35,5.81162148977679e-05,0.573171169429236
+"GO:0031981","nuclear lumen","CC",2200,19,0.000155887229268937,0.625754107624483
+"GO:0044428","nuclear part","CC",2441,20,0.000226916717047119,0.625754107624483
+"GO:0043229","intracellular organelle","CC",7913,45,0.000229889846769229,0.625754107624483
+"GO:0034382","chylomicron remnant clearance","BP",7,2,0.000245909952736446,0.625754107624483
+"GO:0071830","triglyceride-rich lipoprotein particle clearance","BP",7,2,0.000245909952736446,0.625754107624483
+"GO:0043231","intracellular membrane-bounded organelle","CC",7134,42,0.00025379127305429,0.625754107624483
+"GO:0005634","nucleus","CC",4411,30,0.000457954893754821,0.907761031485614
+"GO:0005915","zonula adherens","CC",6,2,0.000525422665992255,0.907761031485614
+"GO:0010624","regulation of Schwann cell proliferation","BP",5,2,0.000535339507102194,0.907761031485614
+"GO:0014010","Schwann cell proliferation","BP",6,2,0.000585356081573321,0.907761031485614
+"GO:0005654","nucleoplasm","CC",1856,16,0.000662481964313225,0.907761031485614
+"GO:0005737","cytoplasm","CC",7233,42,0.000663358601475257,0.907761031485614
+"GO:0005856","cytoskeleton","CC",1446,15,0.00069031257147195,0.907761031485614
+"GO:1902589","single-organism organelle organization","BP",1164,13,0.000831762898042716,1
+"GO:0045668","negative regulation of osteoblast differentiation","BP",33,3,0.0010032953673817,1
+"GO:0071233","cellular response to leucine","BP",1,1,0.00101691549926722,1
+"GO:0071596","ubiquitin-dependent protein catabolic process via the N-end rule pathway","BP",1,1,0.00101691549926722,1
+"GO:0007010","cytoskeleton organization","BP",827,11,0.0011955097258153,1
+"GO:0043232","intracellular non-membrane-bounded organelle","CC",2594,20,0.0012060713579226,1
+"GO:0043228","non-membrane-bounded organelle","CC",2594,20,0.0012060713579226,1
+"GO:0044241","lipid digestion","BP",16,2,0.00128917434864193,1
+"GO:0070013","intracellular organelle lumen","CC",2770,20,0.00142509667762733,1
+"GO:0031974","membrane-enclosed lumen","CC",2770,20,0.00142509667762733,1
+"GO:0043233","organelle lumen","CC",2770,20,0.00142509667762733,1
+"GO:0015630","microtubule cytoskeleton","CC",725,9,0.00166809492959778,1
+"GO:0030955","potassium ion binding","MF",13,2,0.00192499628573743,1
+"GO:0045667","regulation of osteoblast differentiation","BP",95,4,0.00195208429407819,1
+"GO:0034373","intermediate-density lipoprotein particle remodeling","BP",1,1,0.00195832128617829,1
+"GO:0070728","leucine binding","MF",2,1,0.00202644348221698,1
+"GO:0004649","poly(ADP-ribose) glycohydrolase activity","MF",1,1,0.00223031323311078,1
+"GO:0000989","transcription factor activity, transcription factor binding","MF",410,7,0.00270887092675951,1
+"GO:0031420","alkali metal ion binding","MF",15,2,0.00280451822701671,1
+"GO:0000988","transcription factor activity, protein binding","MF",414,7,0.00284439254245854,1
+"GO:0017053","transcriptional repressor complex","CC",57,3,0.00309304094568918,1
+"GO:0044430","cytoskeletal part","CC",1067,11,0.00313893852805918,1
+"GO:0006641","triglyceride metabolic process","BP",75,3,0.00389749609478327,1
+"GO:0044424","intracellular part","CC",9137,47,0.00401041871507424,1
+"GO:0005813","centrosome","CC",313,5,0.00404285883303668,1
+"GO:0030029","actin filament-based process","BP",523,8,0.00429586700674417,1
+"GO:0030279","negative regulation of ossification","BP",55,3,0.004300360227215,1
+"GO:0036310","annealing helicase activity","MF",3,1,0.00482175767854505,1
+"GO:0046602","regulation of mitotic centrosome separation","BP",3,1,0.00484933675787121,1
+"GO:0006996","organelle organization","BP",2093,16,0.00485235809833951,1
+"GO:0005829","cytosol","CC",2250,17,0.0051242224960653,1
+"GO:0034381","plasma lipoprotein particle clearance","BP",27,2,0.00517182640327106,1
+"GO:0044444","cytoplasmic part","CC",5434,32,0.00550470037470893,1
+"GO:0000733","DNA strand renaturation","BP",4,1,0.00584616588213207,1
+"GO:0030036","actin cytoskeleton organization","BP",449,7,0.0059271136986099,1
