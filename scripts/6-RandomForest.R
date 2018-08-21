@@ -1,5 +1,5 @@
 ######################
-# Comparing significant CpGs from EWAS to LaWAS results
+# Comparing significant CpGs from Random Forest to LaWAS results
 #
 # Author: Alexander Titus
 # Created: 08/20/2018
@@ -64,32 +64,24 @@
      
      
 #####################
-# LASSO
+# Random forest
 #####################  
-     # https://cran.r-project.org/web/packages/biglasso/vignettes/biglasso.pdf
-     # install.packages('biglasso')
-     require(biglasso)
+     # https://github.com/imbs-hl/ranger
+     # install.packages('devtools')
+     # install.packages('ranger')
+     library(caret)
+     
      temp = cbind('ERpos' = covs.updated$ERpos, betas)
      temp = temp[!is.na(temp$ERpos), ]
+     
+     control <- rfeControl(functions=rfFuncs, method="cv", number=10)
      
      X = temp[, 2:ncol(temp)]
      y = temp$ERpos
      
-     X.bm <- as.big.matrix(X)
-     
-     fit <- biglasso(X.bm, y, screen = "SSR-BEDPP")
-     plot(fit)
-     
-     cvfit <- cv.biglasso(X.bm, y, seed = 1234, nfolds = 10, ncores = 4)
-     par(mfrow = c(2, 2), mar = c(3.5, 3.5, 3, 1) ,mgp = c(2.5, 0.5, 0))
-     plot(cvfit, type = "all")
-     
-     summary(cvfit)
-     coef(cvfit)[which(coef(cvfit) != 0)]
-     
-     temp2 = temp[, which(coef(cvfit) != 0)]
+     results <- rfe(X, y, sizes=c(1:8), rfeControl=control)
      
      
-     anno.temp = anno[anno$Name %in% colnames(temp2), ]
-     write.csv(anno.temp, file = 'results/ERposVERneg_LASSO.csv')
+     
+    
      
