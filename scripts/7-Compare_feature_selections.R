@@ -166,3 +166,30 @@
           annotate(geom = 'text',x = -3.35,y = qcutLow - 0.5,label = paste(format(cpgUnder,big.mark = ','),'CpGs'),size =8)
      dev.off()
      
+     
+#####################
+# Enrichment
+#####################
+     vae.anno = anno[anno$Name %in% vae.cpg, ]
+     input.anno = anno[anno$Name %in% colnames(betas),]
+     vae.anno$pmd = ifelse(vae.anno$Name %in% pmd.cpg, 1, 0)
+     vae.anno$hmd = ifelse(vae.anno$Name %in% hmd.cpg, 1, 0)
+     input.anno$pmd = ifelse(input.anno$Name %in% pmd.cpg, 1, 0)
+     input.anno$hmd = ifelse(input.anno$Name %in% hmd.cpg, 1, 0)
+     
+     wcpw <- matrix(c(nrow(vae.anno[vae.anno$pmd == 1, ]), nrow(vae.anno[vae.anno$pmd == 0, ]),
+                           nrow(input.anno[input.anno$pmd == 1, ]), nrow(input.anno[input.anno$pmd == 0, ])), nrow = 2,
+                         dimnames =
+                              list(c("VAEwcpw", "VAEnowcpw"),
+                                   c("ORGwcpw", "ORGnowcpw")))
+     
+     fisher.test(wcpw)
+     
+     wcpw <- matrix(c(nrow(vae.anno[vae.anno$hmd == 1, ]), nrow(vae.anno[vae.anno$hmd == 0, ]),
+                      nrow(input.anno[input.anno$hmd == 1, ]), nrow(input.anno[input.anno$hmd == 0, ])), nrow = 2,
+                    dimnames =
+                         list(c("VAEwcpw", "VAEnowcpw"),
+                              c("ORGwcpw", "ORGnowcpw")))
+     
+     fisher.test(wcpw)
+     
