@@ -86,6 +86,7 @@
      vae.file = 'ERposVERneg_VAEcorr.csv'
      vae.dir = paste('results', vae.file, sep = '/')
      vae = data.frame(fread(vae.dir)) 
+     vae = vae[vae$Node %in% c(24, 35, 43, 91, 93), ]
      vae.cpg = vae$CpG
      vae.cpg = unique(vae.cpg)
      

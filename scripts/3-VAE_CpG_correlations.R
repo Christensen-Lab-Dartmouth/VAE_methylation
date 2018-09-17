@@ -9,8 +9,8 @@
 #####################
 # Set up the environment
 #####################
-     require(data.table)
-     require(limma)
+     library(data.table)
+     library(limma)
 
 ######################
 ## Set WD
@@ -89,22 +89,6 @@
      threshold = 0.5
 
 #####################  
-     # 2D analyses
-     #correlations1 = node_corrs(1, betas, vae)
-     #correlations1 = subset_cors(threshold, correlations1)
-     
-     #correlations2 = node_corrs(2, betas, vae)
-     #correlations2 = subset_cors(threshold, correlations2)  
-     
-     # 3D analyses
-     #correlations1 = node_corrs(1, betas, vae)
-     #correlations1 = subset_cors(threshold, correlations1)
-     
-     #correlations2 = node_corrs(2, betas, vae)
-     #correlations2 = subset_cors(threshold, correlations2)
-     
-     #correlations3 = node_corrs(3, betas, vae)
-     #correlations3 = subset_cors(threshold, correlations3)
      
      # 100D analyses
      # ER-
@@ -160,16 +144,6 @@
 ##################### 
      dimensions = c(24, 35, 43, 91, 93, 22, 63)
      thresholds = c(0.7, 0.6, 0.7, 0.625, 0.6, 0.625, 0.675)
-     #thresholds = c(0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6)
-     
-     # 2D analyses
-     #plot_corr_elbow(correlations1, 1, threshold, plot_line = T, line = 0.6)
-     #plot_corr_elbow(correlations2, 2, threshold, plot_line = T, line = 0.8)
-     
-     # 3D analyses
-     #plot_corr_elbow(correlations1, 1, threshold, plot_line = T, line = 0.65)
-     #plot_corr_elbow(correlations2, 2, threshold, plot_line = T, line = 0.75)
-     #plot_corr_elbow(correlations3, 3, threshold, plot_line = T, line = 0.7)
      
      # 100D analyses
      plot_corr_elbow(correlations24, 24, threshold, plot_line = T, line = thresholds[1])
@@ -179,8 +153,6 @@
      plot_corr_elbow(correlations93, 93, threshold, plot_line = T, line = thresholds[5])
      plot_corr_elbow(correlations22, 22, threshold, plot_line = T, line = thresholds[6])
      plot_corr_elbow(correlations63, 63, threshold, plot_line = T, line = thresholds[7])
-     
-     
      
      
 #####################
@@ -247,15 +219,6 @@
      
 
 #####################
-     # 2D analyses
-     #go_pathway_analysis(correlations1, 1, threshold = 0.6, ann450k)
-     #go_pathway_analysis(correlations2, 2, threshold = 0.8, ann450k)
-     
-     # 3D analyses
-     #go_pathway_analysis(correlations1, 1, threshold = 0.65, ann450k)
-     #go_pathway_analysis(correlations2, 2, threshold = 0.75, ann450k)
-     #go_pathway_analysis(correlations3, 3, threshold = 0.7, ann450k)
-     
      # 100D analyses
      go_pathway_analysis(correlations24, dimensions[1], threshold = thresholds[1], ann450k)
      go_pathway_analysis(correlations35, dimensions[2], threshold = thresholds[2], ann450k)
@@ -269,7 +232,9 @@
 #####################
 # Enhancer calculations
 #####################
-
+     #install.packages("samplesizeCMH")
+     #library(samplesizeCMH)
+     
      ann450k = getAnnotation(IlluminaHumanMethylation450kanno.ilmn12.hg19)
      breast.anno = data.frame(fread('data/Illumina-Human-Methylation-450kilmn12-hg19.annotated.csv'))
      ann450k = merge(ann450k, breast.anno, by = 'Name')
@@ -307,64 +272,108 @@
                
                anno.sub = cbind('NodeCor' = temp$correlations, anno.sub)
                
+               temp = ann450k
+               temp$VAEcpg = ifelse(temp$Name %in% anno.sub$Name, 1, 0)
+               
+               
+               
                if(enhancer == 'Enhancer'){
-                    nodeEnhancer = nrow(anno.sub[anno.sub$Enhancer == 'TRUE', ]); nodeEnhancer
-                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Enhancer == '', ]); nodeNoEnhancer
-                    annoEnhancer = nrow(ann450k[ann450k$Enhancer == 'TRUE', ]); annoEnhancer
-                    annoNoEnhancer = nrow(ann450k[ann450k$Enhancer == '', ]); annoNoEnhancer
+                    temp$Enhancer = ifelse(temp$Enhancer == T, 1, 0)
+                    test = table("t" = temp$Type.x, "e" = temp$Enhancer, "v" = temp$VAEcpg)
+                    
                } else if (enhancer == 'OpenSea'){
-                    nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
-                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
-                    annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
-                    annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+                    temp$IslandContext = ifelse(temp$Relation_to_Island == enhancer, 1, 0)
+                    test = table("t" = temp$Type.x, "e" = temp$IslandContext, "v" = temp$VAEcpg)
+   
                } else if (enhancer == 'Island'){
-                    nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
-                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
-                    annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
-                    annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+                    temp$IslandContext = ifelse(temp$Relation_to_Island == enhancer, 1, 0)
+                    test = table("t" = temp$Type.x, "e" = temp$IslandContext, "v" = temp$VAEcpg)
+                    
                } else if (enhancer == 'S_Shore'){
-                    nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
-                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
-                    annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
-                    annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+                    temp$IslandContext = ifelse(temp$Relation_to_Island == enhancer, 1, 0)
+                    test = table("t" = temp$Type.x, "e" = temp$IslandContext, "v" = temp$VAEcpg)
+                    
                } else if (enhancer == 'N_Shore'){
-                    nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
-                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
-                    annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
-                    annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+                    temp$IslandContext = ifelse(temp$Relation_to_Island == enhancer, 1, 0)
+                    test = table("t" = temp$Type.x, "e" = temp$IslandContext, "v" = temp$VAEcpg)
+                    
                } else if (enhancer == 'N_Shelf'){
-                    nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
-                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
-                    annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
-                    annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+                    temp$IslandContext = ifelse(temp$Relation_to_Island == enhancer, 1, 0)
+                    test = table("t" = temp$Type.x, "e" = temp$IslandContext, "v" = temp$VAEcpg)
+                    
                } else if (enhancer == 'S_Shelf'){
-                    nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
-                    nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
-                    annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
-                    annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+                    temp$IslandContext = ifelse(temp$Relation_to_Island == enhancer, 1, 0)
+                    test = table("t" = temp$Type.x, "e" = temp$IslandContext, "v" = temp$VAEcpg)
+                    
                } else if (enhancer == 'DHS'){
-                    nodeEnhancer = nrow(anno.sub[anno.sub$DHS == 'TRUE', ]); nodeEnhancer
-                    nodeNoEnhancer = nrow(anno.sub[anno.sub$DHS == '', ]); nodeNoEnhancer
-                    annoEnhancer = nrow(ann450k[ann450k$DHS == 'TRUE', ]); annoEnhancer
-                    annoNoEnhancer = nrow(ann450k[ann450k$DHS == '', ]); annoNoEnhancer
+                    temp$DHS = ifelse(temp$DHS == 'TRUE', 1, 0)
+                    test = table("t" = temp$Type.x, "e" = temp$DHS, "v" = temp$VAEcpg)
+                    
                } else{
-                    nodeEnhancer = nrow(anno.sub[anno.sub[[enhancer]] == 1, ]); nodeEnhancer
-                    nodeNoEnhancer = nrow(anno.sub[anno.sub[[enhancer]] == 0, ]); nodeNoEnhancer
-                    annoEnhancer = nrow(ann450k[ann450k[[enhancer]] == 1, ]); annoEnhancer
-                    annoNoEnhancer = nrow(ann450k[ann450k[[enhancer]] == 0, ]); annoNoEnhancer
+                    test = table("t" = temp$Type.x, "e" = temp[[enhancer]], "v" = temp$VAEcpg)
+                    
                }
                
                
+               # if(enhancer == 'Enhancer'){
+               #      nodeEnhancer = nrow(anno.sub[anno.sub$Enhancer == 'TRUE', ]); nodeEnhancer
+               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Enhancer == '', ]); nodeNoEnhancer
+               #      annoEnhancer = nrow(ann450k[ann450k$Enhancer == 'TRUE', ]); annoEnhancer
+               #      annoNoEnhancer = nrow(ann450k[ann450k$Enhancer == '', ]); annoNoEnhancer
+               # } else if (enhancer == 'OpenSea'){
+               #      nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
+               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
+               #      annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
+               #      annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+               # } else if (enhancer == 'Island'){
+               #      nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
+               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
+               #      annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
+               #      annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+               # } else if (enhancer == 'S_Shore'){
+               #      nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
+               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
+               #      annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
+               #      annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+               # } else if (enhancer == 'N_Shore'){
+               #      nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
+               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
+               #      annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
+               #      annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+               # } else if (enhancer == 'N_Shelf'){
+               #      nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
+               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
+               #      annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
+               #      annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+               # } else if (enhancer == 'S_Shelf'){
+               #      nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
+               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
+               #      annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
+               #      annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
+               # } else if (enhancer == 'DHS'){
+               #      nodeEnhancer = nrow(anno.sub[anno.sub$DHS == 'TRUE', ]); nodeEnhancer
+               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$DHS == '', ]); nodeNoEnhancer
+               #      annoEnhancer = nrow(ann450k[ann450k$DHS == 'TRUE', ]); annoEnhancer
+               #      annoNoEnhancer = nrow(ann450k[ann450k$DHS == '', ]); annoNoEnhancer
+               # } else{
+               #      nodeEnhancer = nrow(anno.sub[anno.sub[[enhancer]] == 1, ]); nodeEnhancer
+               #      nodeNoEnhancer = nrow(anno.sub[anno.sub[[enhancer]] == 0, ]); nodeNoEnhancer
+               #      annoEnhancer = nrow(ann450k[ann450k[[enhancer]] == 1, ]); annoEnhancer
+               #      annoNoEnhancer = nrow(ann450k[ann450k[[enhancer]] == 0, ]); annoNoEnhancer
+               # }
                
-               enhancers <- matrix(c(nodeEnhancer, annoEnhancer, 
-                                     nodeNoEnhancer, annoNoEnhancer), nrow = 2,
-                                   dimnames =
-                                        list(c("NodeRelated", "NotNodeRelated"),
-                                             c("Enhancer", "NotEnhancer")))
                
-               node.results = fisher.test(enhancers); node.results
+               # enhancers <- matrix(c(nodeEnhancer, annoEnhancer, 
+               #                       nodeNoEnhancer, annoNoEnhancer), nrow = 2,
+               #                     dimnames =
+               #                          list(c("NodeRelated", "NotNodeRelated"),
+               #                               c("Enhancer", "NotEnhancer")))
+               # 
+               # node.results = fisher.test(enhancers); node.results
                
                
+               partial_tables = margin.table(test, c(2,3,1))
+               node.results = mantelhaen.test(partial_tables, exact = T)
                
                row = c(nodeName, node.results$estimate, 
                        node.results$conf.int[1],
@@ -581,14 +590,18 @@
      
      
      # Together
+     # install.packages('tiyverse)
+     #library(tidyverse)
      gran = 'IslandContext'
-     enhancer_results.out$Node = factor(enhancer_results.out$Node, levels = c("VAE24", "VAE35", "VAE43",
+     enhancer_results.out$Node = fct_rev(factor(enhancer_results.out$Node, levels = c("VAE24", "VAE35", "VAE43",
                                                                               "VAE91", "VAE93",
-                                                                              "VAE22", "VAE63"))
+                                                                              "VAE22", "VAE63")))
      enhancer_results.out2 = enhancer_results.out
      enhancer_results.out = enhancer_results.out[enhancer_results.out$Est > 0, ]
      
-     islandContexts = c('N_Shelf', 'N_Shore', 'Island', 'S_Shore', 'S_Shelf', 'OpenSea')
+     #islandContexts = c('N_Shelf', 'N_Shore', 'Island', 'S_Shore', 'S_Shelf', 'OpenSea')
+     islandContexts = c('Island', 'OpenSea')
+     
      temp = enhancer_results.out[enhancer_results.out$Mark %in% islandContexts, ]
      
      fp1 <- ggplot(data=temp, aes(x = Mark, 
@@ -647,7 +660,7 @@
           scale_y_log10(breaks=c(0.25, 0.5, 1, 2, 4),position="top")
      
      file.name = paste0('results/OR_enhancer_by_dimension_100D_', gran, '.png')
-     png(file.name, width = 3000, height = 3000, res = 300)
+     png(file.name, width = 3000, height = 3500, res = 300)
      print(fp2)
      dev.off()
 
@@ -678,7 +691,7 @@
           scale_y_log10(breaks=c(0, 0.25, 0.5, 1, 2, 4),  position="top")
      
      file.name = paste0('results/OR_enhancer_by_dimension_100D_', gran, '.png')
-     png(file.name, width = 3000, height = 2500, res = 300)
+     png(file.name, width = 3000, height = 4500, res = 300)
      print(fp3)
      dev.off()
      

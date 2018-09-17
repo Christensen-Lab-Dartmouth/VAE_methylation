@@ -262,6 +262,7 @@ merged.data = merge(covs.updated, vae, by.x = 'Basename', by.y = 'CpG')
      meltVAE.temp = meltVAE[meltVAE$Dimension %in% rownames(ERMeds), ]
      meltVAE.temp$ER = ifelse(meltVAE.temp$ER == '', 'Unknown', meltVAE.temp$ER) 
      meltVAE.temp = meltVAE.temp[meltVAE.temp$Dimension %in% c(22, 37, 63), ] # Uncomment for figure one, otherwise sup figure 1
+     meltVAE.temp = meltVAE.temp[meltVAE.temp$ER != 'Unknown', ]
      
      ERstatus = factor(meltVAE.temp$ER)
      
@@ -271,10 +272,10 @@ merged.data = merge(covs.updated, vae, by.x = 'Basename', by.y = 'CpG')
 
      file.name = 'vaeDim_activation_distribution_ERstatus.png'
      file.dir = paste('results', file.name, sep = '/')
-     png(file.dir, width = 2000, height = 1000, res = 100)
+     png(file.dir, width = 2000, height = 1000, res = 300)
      p1 = p1 + geom_boxplot() + #facet_grid(ER ~ .) + # two panel
-          labs(x = 'VAE latent dimension', y = 'VAE latent dimension activation') +
-          theme_Publication() + theme(legend.position="none")
+          labs(x = 'VAE latent dimension', y = 'VAE latent dimension \n activation') +
+          theme_Publication() + theme(legend.position="none"); p1
      dev.off()
      
      
@@ -283,6 +284,7 @@ merged.data = merge(covs.updated, vae, by.x = 'Basename', by.y = 'CpG')
      meltVAE.temp = meltVAE[meltVAE$Dimension %in% rownames(ERPMeds), ]
      meltVAE.temp$ER = ifelse(meltVAE.temp$ER == '', 'Unknown', meltVAE.temp$ER) 
      meltVAE.temp = meltVAE.temp[meltVAE.temp$Dimension %in% c(47, 91, 93), ]
+     meltVAE.temp = meltVAE.temp[meltVAE.temp$ER != 'Unknown', ]
      ERstatus = factor(meltVAE.temp$ER)
      
      p3 = ggplot(meltVAE.temp, aes(x = reorder(factor(Dimension), Activation, FUN = sum), 
@@ -290,17 +292,18 @@ merged.data = merge(covs.updated, vae, by.x = 'Basename', by.y = 'CpG')
      
      file.name = 'vaeDim_activation_distribution_ERpositive.png'
      file.dir = paste('results', file.name, sep = '/')
-     png(file.dir, width = 2000, height = 1000, res = 100)
+     png(file.dir, width = 2000, height = 1000, res = 300)
      p3 = p3 + geom_boxplot() + #facet_grid(ER ~ .) + # two panel
-          labs(x = 'VAE latent dimension', y = 'VAE latent dimension activation') +
-          theme_Publication()
+          labs(x = 'VAE latent dimension', y = 'VAE latent dimension \n activation') +
+          theme_Publication() + theme(legend.text=element_text(size=25)) + theme(legend.key.size=unit(1,"cm")); p3
      dev.off()
+     
      
      # ER-
      meltVAE.temp = meltVAE[meltVAE$Dimension %in% rownames(ERNMeds), ]
      meltVAE.temp$ER = ifelse(meltVAE.temp$ER == '', 'Unknown', meltVAE.temp$ER) 
      meltVAE.temp = meltVAE.temp[meltVAE.temp$Dimension %in% c(24, 35, 43), ]
-     
+     meltVAE.temp = meltVAE.temp[meltVAE.temp$ER != 'Unknown', ]
      ERstatus = factor(meltVAE.temp$ER)
      
      p2 = ggplot(meltVAE.temp, aes(x = reorder(factor(Dimension), Activation, FUN = sum), 
@@ -308,10 +311,10 @@ merged.data = merge(covs.updated, vae, by.x = 'Basename', by.y = 'CpG')
      
      file.name = 'vaeDim_activation_distribution_ERnegative.png'
      file.dir = paste('results', file.name, sep = '/')
-     png(file.dir, width = 2000, height = 1000, res = 100)
+     png(file.dir, width = 2000, height = 1000, res = 300)
      p2 = p2 + geom_boxplot() + #facet_grid(ER ~ .) + # two panel
-          labs(x = 'VAE latent dimension', y = 'VAE latent dimension activation') +
-          theme_Publication() + theme(legend.position="none")
+          labs(x = 'VAE latent dimension', y = 'VAE latent dimension \n activation') +
+          theme_Publication() + theme(legend.position="none"); p2
      dev.off()
      
 
@@ -326,6 +329,7 @@ merged.data = merge(covs.updated, vae, by.x = 'Basename', by.y = 'CpG')
      print(g)
      
      ggsave(g, file="results/VAE_latent_dim_activations.png", width=16, height=20)
+     
 ##########
 # Heatmap
 ##########
