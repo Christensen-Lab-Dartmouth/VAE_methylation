@@ -40,10 +40,6 @@
      covs.updated = covs.updated[order(covs.updated$Basename, decreasing=T), ]
      
      ## VAE nodes
-     # 2D analyses
-     #vae.file = 'results/VAE_training/encoded_methyl_onehidden_warmup_batchnorm_100k_2.tsv'
-     # 3D analyses
-     #vae.file = 'results/VAE_training/encoded_methyl_onehidden_warmup_batchnorm_100k_3.tsv'
      # 100D analyses
      vae.file = 'results/VAE_training/encoded_methyl_onehidden_warmup_batchnorm_100k_100.tsv'
      
@@ -94,33 +90,42 @@
      # ER-
      correlations24 = node_corrs(24, betas, vae)
      correlations24 = subset_cors(threshold, correlations24)
+     write.csv(correlations24, file = 'results/correlations24.csv')
      
      correlations35 = node_corrs(35, betas, vae)
      correlations35 = subset_cors(threshold, correlations35)
+     write.csv(correlations35, file = 'results/correlations35.csv')
      
      correlations43 = node_corrs(43, betas, vae)
      correlations43 = subset_cors(threshold, correlations43)
+     write.csv(correlations43, file = 'results/correlations43.csv')
      
      # ER+
      correlations47 = node_corrs(47, betas, vae)
      correlations47 = subset_cors(threshold, correlations47)
+     write.csv(correlations47, file = 'results/correlations47.csv')
      
      correlations91 = node_corrs(91, betas, vae)
      correlations91 = subset_cors(threshold, correlations91)
+     write.csv(correlations91, file = 'results/correlations91.csv')
      
      correlations93 = node_corrs(93, betas, vae)
      correlations93 = subset_cors(threshold, correlations93)
+     write.csv(correlations93, file = 'results/correlations93.csv')
      
      
      # ER+/-
      correlations63 = node_corrs(63, betas, vae)
      correlations63 = subset_cors(threshold, correlations63)
+     write.csv(correlations63, file = 'results/correlations63.csv')
      
      correlations37 = node_corrs(37, betas, vae)
      correlations37 = subset_cors(threshold, correlations37)
+     write.csv(correlations37, file = 'results/correlations37.csv')
      
      correlations22 = node_corrs(22, betas, vae)
      correlations22 = subset_cors(threshold, correlations22)
+     write.csv(correlations22, file = 'results/correlations22.csv')
      
                
 #####################
@@ -315,63 +320,6 @@
                }
                
                
-               # if(enhancer == 'Enhancer'){
-               #      nodeEnhancer = nrow(anno.sub[anno.sub$Enhancer == 'TRUE', ]); nodeEnhancer
-               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Enhancer == '', ]); nodeNoEnhancer
-               #      annoEnhancer = nrow(ann450k[ann450k$Enhancer == 'TRUE', ]); annoEnhancer
-               #      annoNoEnhancer = nrow(ann450k[ann450k$Enhancer == '', ]); annoNoEnhancer
-               # } else if (enhancer == 'OpenSea'){
-               #      nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
-               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
-               #      annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
-               #      annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
-               # } else if (enhancer == 'Island'){
-               #      nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
-               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
-               #      annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
-               #      annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
-               # } else if (enhancer == 'S_Shore'){
-               #      nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
-               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
-               #      annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
-               #      annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
-               # } else if (enhancer == 'N_Shore'){
-               #      nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
-               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
-               #      annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
-               #      annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
-               # } else if (enhancer == 'N_Shelf'){
-               #      nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
-               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
-               #      annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
-               #      annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
-               # } else if (enhancer == 'S_Shelf'){
-               #      nodeEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island == enhancer, ]); nodeEnhancer
-               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$Relation_to_Island != enhancer, ]); nodeNoEnhancer
-               #      annoEnhancer = nrow(ann450k[ann450k$Relation_to_Island == enhancer, ]); annoEnhancer
-               #      annoNoEnhancer = nrow(ann450k[ann450k$Relation_to_Island != enhancer, ]); annoNoEnhancer
-               # } else if (enhancer == 'DHS'){
-               #      nodeEnhancer = nrow(anno.sub[anno.sub$DHS == 'TRUE', ]); nodeEnhancer
-               #      nodeNoEnhancer = nrow(anno.sub[anno.sub$DHS == '', ]); nodeNoEnhancer
-               #      annoEnhancer = nrow(ann450k[ann450k$DHS == 'TRUE', ]); annoEnhancer
-               #      annoNoEnhancer = nrow(ann450k[ann450k$DHS == '', ]); annoNoEnhancer
-               # } else{
-               #      nodeEnhancer = nrow(anno.sub[anno.sub[[enhancer]] == 1, ]); nodeEnhancer
-               #      nodeNoEnhancer = nrow(anno.sub[anno.sub[[enhancer]] == 0, ]); nodeNoEnhancer
-               #      annoEnhancer = nrow(ann450k[ann450k[[enhancer]] == 1, ]); annoEnhancer
-               #      annoNoEnhancer = nrow(ann450k[ann450k[[enhancer]] == 0, ]); annoNoEnhancer
-               # }
-               
-               
-               # enhancers <- matrix(c(nodeEnhancer, annoEnhancer, 
-               #                       nodeNoEnhancer, annoNoEnhancer), nrow = 2,
-               #                     dimnames =
-               #                          list(c("NodeRelated", "NotNodeRelated"),
-               #                               c("Enhancer", "NotEnhancer")))
-               # 
-               # node.results = fisher.test(enhancers); node.results
-               
-               
                partial_tables = margin.table(test, c(2,3,1))
                node.results = mantelhaen.test(partial_tables, exact = T)
                
@@ -399,10 +347,10 @@
 #####################
 # ggplot theme
 #####################   
-     theme_Publication <- function(base_size=14, base_family="helvetica") {
+     theme_Publication <- function(base_size=14) {
           library(grid)
           library(ggthemes)
-          (theme_foundation(base_size=base_size, base_family=base_family)
+          (theme_foundation(base_size=base_size)
                + theme(plot.title = element_text(face = "bold",
                                                  size = rel(1.2), hjust = 0.5),
                        text = element_text(),
@@ -478,20 +426,7 @@
           enhancer_results$Node = factor(enhancer_results$Node, levels = c("VAE24", "VAE35", "VAE43",
                                                                            "VAE91", "VAE93",
                                                                            "VAE22", "VAE63"))
-          # # Log-odds
-          # fp <- ggplot(data=enhancer_results, aes(x=log(Est), 
-          #                                        y=factor(Node), 
-          #                                        xmin=log(Conf95low), 
-          #                                        xmax=log(Conf95high))) +
-          #      geom_point() +
-          #      geom_text(aes(label=format(round(log(Est), 2), nsmall = 2)), hjust=0, vjust=-0.5) +
-          #      geom_errorbarh(height=.02) +
-          #      ylab('VAE latent dimension') +
-          #      geom_vline(xintercept=log(1), color='black', linetype='dashed') +
-          #      scale_x_continuous(limits=c(min(-log(1.5), max(-log(70), min(log(enhancer_results$Conf95high)))), 
-          #                                  max(log(1.5), min(log(70), max(log(enhancer_results$Conf95high))))),
-          #                         name='Log-odds ratio w/ 95% CI') +
-          #      ggtitle(paste0(enhancer)) + theme_Publication()
+     
           fp <- ggplot(data=enhancer_results, aes(x = factor(Node), 
                                                   y = Est, 
                                                   ymin = Conf95low, 
@@ -513,7 +448,7 @@
      
      enhancer_results.out = enhancer_results.out[2:nrow(enhancer_results.out), ]
      write.csv(enhancer_results.out, file = 'results/enhancer_results_by_mark_100D.csv')
-
+     enhancer_results.out = read.csv(file = 'results/enhancer_results_by_mark_100D.csv')
      
 #####################
 # Plots by latent dimension
@@ -653,7 +588,7 @@
           geom_pointrange(aes(col=Node)) +
           geom_hline(aes(fill=Mark), yintercept =1, linetype=2)+
           geom_text(aes(label=format(round(Est, 2), nsmall = 2)), hjust=0, vjust=-0.5) +
-          xlab('Transcriptional Repressive Context')+ ylab("Log-Odds Ratio (95% Confidence Interval)")+
+          xlab('Transcriptional Repressive Context')+ ylab("Odds Ratio (95% Confidence Interval)")+
           geom_errorbar(aes(ymin=Conf95low, ymax=Conf95high, col=Node), width=0.1, cex=1) + 
           facet_wrap(~Node, strip.position="left", nrow=7, scales = "free_y") +
           coord_flip() + theme_Publication() + theme(legend.position="none", text = element_text(size = 20)) +
@@ -684,7 +619,7 @@
           geom_pointrange(aes(col=Node)) +
           geom_hline(aes(fill=Mark), yintercept =1, linetype=2)+
           geom_text(aes(label=format(round(Est, 2), nsmall = 2)), hjust=0, vjust=-0.5) +
-          xlab('Transcriptional Activation Context')+ ylab("Log-Odds Ratio (95% Confidence Interval)")+
+          xlab('Transcriptional Activation Context')+ ylab("Odds Ratio (95% Confidence Interval)")+
           geom_errorbar(aes(ymin=Conf95low, ymax=Conf95high, col=Node), width=0.1, cex=1) + 
           facet_wrap(~Node, strip.position="left", nrow=7, scales = "free_y") +
           coord_flip() + theme_Publication() + theme(legend.position="none", text = element_text(size = 20)) +

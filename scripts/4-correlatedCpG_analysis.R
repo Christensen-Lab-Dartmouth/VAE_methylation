@@ -15,17 +15,18 @@
 ######################
 ## Set WD
 # Change this to your base WD, and all other code is relative to the folder structure
-     base.dir = 'C:/Users/atitus/github/VAE_methylation'
+     #base.dir = 'C:/Users/atitus/github/VAE_methylation'
+     base.dir = '/Users/alexandertitus/Documents/github/VAE_methylation/'
      setwd(base.dir)
 
      
 #####################
 # ggplot theme
 #####################   
-     theme_Publication <- function(base_size=14, base_family="helvetica") {
+     theme_Publication <- function(base_size=14) {
           library(grid)
           library(ggthemes)
-          (theme_foundation(base_size=base_size, base_family=base_family)
+          (theme_foundation(base_size=base_size)
                + theme(plot.title = element_text(face = "bold",
                                                  size = rel(1.2), hjust = 0.5),
                        text = element_text(),
@@ -291,12 +292,12 @@
                            ifelse(temp$ER == 'Positive', 'Positive', 'Negative'))
           
           
-          
+          temp = temp[temp$ER != 'Unknown', ]
           g = ggplot(temp, aes(x=node.name, y=Betas)) +
                geom_point(size=2, aes(col = ER)) + 
                geom_smooth(method='lm') +
                ylim(0, 1) + 
-               ggtitle(paste0("VAE dimension ", node)) +
+               ggtitle(paste0("VAE", node)) +
                xlab(paste0('VAE', node, ' Activation')) + 
                ylab(paste0(temp.cpg, ' Beta Value')) + 
                theme(legend.position=annotLedgend) +
@@ -305,22 +306,45 @@
           return(g)
      }
      
-     n24 = plot.cor(correlations24, 24, annotLedgend = 'none') 
-     n35 = plot.cor(correlations35, 35, annotLedgend = 'none') 
-     n43 = plot.cor(correlations43, 43, annotLedgend = 'none') 
-     n91 = plot.cor(correlations91, 91, annotLedgend = 'none') 
-     n93 = plot.cor(correlations93, 93, annotLedgend = 'none') 
-     n22 = plot.cor(correlations22, 22, annotLedgend = 'bottom') 
-     n63 = plot.cor(correlations63, 63, annotLedgend = 'none') 
+    
+     
+     png(filename = 'results/correlations24.png', width = 1200, height = 1200, res = 300)
+     n24 = plot.cor(correlations24, 24, annotLedgend = 'none'); n24
+     dev.off()
+     
+     png(filename = 'results/correlations35.png', width = 1200, height = 1200, res = 300)
+     n35 = plot.cor(correlations35, 35, annotLedgend = 'none'); n35
+     dev.off()
+     
+     png(filename = 'results/correlations43.png', width = 1200, height = 1200, res = 300)
+     n43 = plot.cor(correlations43, 43, annotLedgend = 'none'); n43
+     dev.off()
+     
+     png(filename = 'results/correlations91.png', width = 1200, height = 1200, res = 300)
+     n91 = plot.cor(correlations91, 91, annotLedgend = 'none'); n91
+     dev.off()
+     
+     png(filename = 'results/correlations93.png', width = 1200, height = 1200, res = 300)
+     n93 = plot.cor(correlations93, 93, annotLedgend = 'none'); n93
+     dev.off()
+     
+     png(filename = 'results/correlations22.png', width = 1200, height = 1200, res = 300)
+     n22 = plot.cor(correlations22, 22, annotLedgend = 'bottom'); n22
+     dev.off()
+     
+     png(filename = 'results/correlations63.png', width = 1200, height = 1200, res = 300)
+     n63 = plot.cor(correlations63, 63, annotLedgend = 'none'); n63
+     dev.off()
+     
      
      lay <- rbind(c(1,2,3),
-                  c(4,5,8),
-                  c(6,7,8))
+                  c(4,5),
+                  c(6,7))
      
      # nFull from right above
      g = grid.arrange(n24, n35, n43,
                       n91, n93,  
-                      n22, n63, nFull, nrow = 3,
+                      n22, n63, nrow = 3,
                       layout_matrix = lay)
      
      ggsave(g, file="results/nodeCpG_correllations.png", width=16, height=16)
