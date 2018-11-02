@@ -1,5 +1,5 @@
 # Variational Autoencoder applied to genome-scale DNA methylation data
-This repository is adapted from the [Tybalt](https://github.com/greenelab/tybalt) repository developed by Way et al. 
+This repository is adapted from the [Tybalt](https://github.com/greenelab/tybalt) repository developed by Way et al. This repository is a fork of the previously mentioned repo, but due to a technical error, it was uploaded to GitHub independently. 
  
 ## Alexander Titus 2018 -- extended from Gregory Way 2017
 
